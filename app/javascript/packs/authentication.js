@@ -1,0 +1,5 @@
+require ('jquery.min')
+require ('popper')
+require ('bootstrap.min')
+require ('jquery.matchHeight.min')
+require ('main')
