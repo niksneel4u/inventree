@@ -2503,4 +2503,29 @@ footer.site-footer {
     left: inherit !important;
     right: 20px !important; }
 
-/*# sourceMappingURL=style.css.map */
+.invalid-error {
+  list-style: none;
+  color: #E74C3C;
+  padding-left: 0;
+  border-color: #dc3545;
+}
+.form-control.invalid-error:focus{
+  border-color:#dc3545;
+  box-shadow:0 0 0 .2rem rgba(220,53,69,.25)
+}
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.login-content {
+  max-width: 800px;
+  margin: 8vh auto;
+}

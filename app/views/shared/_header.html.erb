@@ -7,9 +7,7 @@
   </div>
   <div class="top-right">
     <div class="header-menu">
-      <%= link_to destroy_user_session_path, class: 'nav-link', method: 'delete' do %>
-        <i class="fa fa-power -off"></i>Logout
-      <% end %>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :DELETE, class: 'nav-link'%>
     </div>
   </div>
 </header>

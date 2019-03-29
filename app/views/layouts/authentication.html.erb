@@ -9,15 +9,14 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'authentication', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'authentication', 'data-turbolinks-track': 'reload' %>
+
   </head>
   <body class="bg-dark">
     <div class="sufee-login d-flex align-content-center flex-wrap">
       <div class="container">
         <div class="login-content">
           <div class="login-logo">
-            <a href="index.html">
-              <img class="align-content" src="images/logo.png" alt="">
-            </a>
+            <%= image_tag'logo-white.png', class: "align-content" %>
           </div>
           <div class="login-form">
             <%= yield %>

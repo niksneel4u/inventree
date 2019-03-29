@@ -1,19 +1,47 @@
 # frozen_string_literal: true
 
+# Users controlle with devise
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout 'authentication'
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  attr_reader :company_params, :user_params, :phone_number, :company
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @company = Company.new
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    params_init(params)
+    company = Company.create!(
+      name: company_params[:name],
+      contact_person_name: company_params[:contact_person_name],
+      contact_person_number: phone_number,
+      email: company_params[:email],
+      terms_and_conditions: true,
+      users_attributes: [user]
+    )
+    sign_in(company.users.last)
+  end
 
+  def params_init(params)
+    @company_params = params[:company]
+    @phone_number = company_params[:contact_person_number].to_i
+    @user_params = params[:user]
+  end
+
+  def user
+    {
+      first_name: user_params[:first_name],
+      last_name: user_params[:last_name],
+      password: user_params[:password],
+      password_confirmation: user_params[:password_confirmation],
+      phone_number: phone_number
+    }
+  end
   # GET /resource/edit
   # def edit
   #   super
