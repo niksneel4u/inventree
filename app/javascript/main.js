@@ -1,3 +1,4 @@
+Inventree = {};
 $.noConflict();
 
 jQuery(document).ready(function($) {

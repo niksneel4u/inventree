@@ -7,7 +7,7 @@ export default class extends Controller {
       required: true
     };
 
-    var addressRules = {
+    var signInRules = {
       'user[phone_number]': {
         required: true,
         digits: true,
@@ -32,6 +32,6 @@ export default class extends Controller {
         maxlength: "Password should not grater than 15 characters"
       }
     };
-    Inventree.form.validate_form(addressRules, errorMessages, '#form');
+    Inventree.form.validate_form(signInRules, errorMessages, '#form');
   }
 }
