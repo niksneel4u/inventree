@@ -25,6 +25,10 @@ gem 'devise'
 gem "stroke-seven-rails"
 #use for icons
 gem "font-awesome-rails"
+# use it for scaping
+gem "mechanize"
+# identify user
+gem "rolify"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

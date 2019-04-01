@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  resources :home
-  root 'homes#index'
+  resources :home, :entities
+  get 'homes/getproductdetail', to: 'homes#getproductdetail', as: 'getdata'
+  get 'homes/index', to: 'homes#index'
+  root 'entities#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

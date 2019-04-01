@@ -2529,3 +2529,6 @@ footer.site-footer {
   max-width: 800px;
   margin: 8vh auto;
 }
+.navbar-header {
+  height: 54px;
+}
