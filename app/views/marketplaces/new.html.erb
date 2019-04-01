@@ -1,0 +1,27 @@
+<div class="content">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header"><%= t('marketplace.add_market')%></div>
+        <div class="card-body card-block">
+          <%= form_with model: @marketplace do |f| %> 
+            <div class="form-group">
+              <div class="input-group">
+                <%= f.text_field :name, class: 'form-control', placeholder: t('marketplace.marketplace_name') ,required: true%>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <%= f.text_field :website_url, class: 'form-control', placeholder: t('marketplace.add_url') ,required: true%>
+              </div>
+            </div>
+            <%= f.submit class: 'btn btn-success btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>

@@ -24,6 +24,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       terms_and_conditions: true,
       users_attributes: [user]
     )
+    user = User.find_by(phone_number: company.contact_person_number)
+    user.add_role :client
     sign_in(company.users.last)
     redirect_to root_path
   end

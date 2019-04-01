@@ -30,6 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  url: URL
   name: Name
   add: Add
   action: Action
@@ -37,3 +38,11 @@ en:
     title: Entity
     add_entity: Add New Entity
     entity_name: Enter Entity Name
+  marketplace:
+    title: MaketPlace
+    add_market: Add Market Place
+    marketplace_name: Enter Marketplace Name
+    add_url: Enter URL
+  marketplace_mapping:
+    title: Marketplace Mappings
+    

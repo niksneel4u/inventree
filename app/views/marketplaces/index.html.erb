@@ -6,10 +6,10 @@
           <div class="card-header">
             <div class='row'>
               <div class="col-sm-4">
-                <%= t('entity.title') %>
+                <%= t('marketplace.title') %>
               </div>
               <div class="col-sm-8 text-right">
-                <%= link_to new_entity_path, class: 'btn btn-sm btn-primary pull-right' do %>
+                <%= link_to new_marketplace_path, class: 'btn btn-sm btn-primary pull-right' do %>
                   <i class="fa fa-plus"></i> <%= t('add') %>
                 <% end %>
               </div>
@@ -21,14 +21,14 @@
                 <thead>
                   <tr>
                     <th><%= t('name') %></th>
-                    <th><%= t('action') %></th>
+                    <th><%= t('url') %></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @collections.each do |entity| %>
+                  <% @collections.each do |marketplace| %>
                     <tr>
-                      <td><%= entity.name %></td>
-                      <td><%= t('action') %></td>
+                      <td><%= marketplace.name %></td>
+                      <td><%= marketplace.website_url %></td>
                     </tr>
                   <% end %>
                 </tbody>

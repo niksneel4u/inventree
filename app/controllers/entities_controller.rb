@@ -1,15 +1,6 @@
 # frozen_string_literal: true
 
-class EntitiesController < ApplicationController
-  before_action :authenticate_user!
-
-  def index
-    entities
-  end
-
-  def new
-    @entity = Entity.new
-  end
+class EntitiesController < InheritedResource
 
   def create
     @entity = Entity.new(entity_params)
@@ -19,6 +10,10 @@ class EntitiesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def new
+    @entity = Entity.new
   end
 
   private

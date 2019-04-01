@@ -31,6 +31,8 @@ gem "mechanize"
 gem "rolify"
 # Active link for left side menu
 gem 'active_link_to'
+gem "audited"
+gem "pundit"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
