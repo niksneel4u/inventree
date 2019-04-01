@@ -2,7 +2,7 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'form'}) do |f| %>
     <div class="form-group">
       <%= f.label :phone_number %><br />
-      <%= f.number_field :phone_number, autofocus: true, class: 'form-control', required: true, autocomplete: "Phone number" %>
+      <%= f.phone_field :phone_number, autofocus: true, class: 'form-control', required: true, autocomplete: "Phone number" %>
     </div>
     <div class="form-group">
       <%= f.label :password %><br />
