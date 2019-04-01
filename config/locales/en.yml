@@ -30,6 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  name: Name
+  add: Add
+  action: Action
   entity:
     title: Entity
     add_entity: Add New Entity

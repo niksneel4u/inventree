@@ -3,6 +3,10 @@
 class EntitiesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    entities
+  end
+
   def new
     @entity = Entity.new
   end
@@ -21,5 +25,9 @@ class EntitiesController < ApplicationController
 
   def entity_params
     params.require(:entity).permit(:name)
+  end
+
+  def entities
+    @entities ||= Entity.all
   end
 end
