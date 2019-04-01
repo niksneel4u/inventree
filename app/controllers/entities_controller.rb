@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class EntitiesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @entity = Entity.new
   end

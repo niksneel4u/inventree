@@ -29,6 +29,8 @@ gem "font-awesome-rails"
 gem "mechanize"
 # identify user
 gem "rolify"
+# Active link for left side menu
+gem 'active_link_to'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

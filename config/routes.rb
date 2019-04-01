@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :home, :entities
   get 'homes/getproductdetail', to: 'homes#getproductdetail', as: 'getdata'
   get 'homes/index', to: 'homes#index'
+  
   root 'entities#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -31,5 +31,6 @@
 
 en:
   entity:
-    add_entity: 'Add New Entity'
-    entity_name: 'Enter Entity Name'
+    title: Entity
+    add_entity: Add New Entity
+    entity_name: Enter Entity Name

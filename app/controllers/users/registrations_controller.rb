@@ -25,6 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       users_attributes: [user]
     )
     sign_in(company.users.last)
+    redirect_to root_path
   end
 
   def params_init(params)
