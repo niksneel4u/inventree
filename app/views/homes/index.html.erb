@@ -41,8 +41,8 @@
                         </div>
                         <div class="stat-content">
                           <div class="text-left dib">
-                            <div class="stat-text">₹<span class="count" id='product_rate'  data-controller = { data-target = "getDetail.setRate" }>0</span></div>
-                            <div class="stat-heading">Revenue</div>
+                            <div class="stat-text"> <span class="count" id='product_rate' data-target ="getDetail.setRate">₹</span></div>
+                            <div class="stat-heading">Price</div>
                           </div>
                         </div>
                       </div>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="stat-content">
                           <div class="text-left dib">
-                            <div class="stat-text"><span class="count">3435</span></div>
+                            <div class="stat-text"><span class="count" id = "marketPlace" data-target = "getDetail.setMarketPlace">Marketplace</span></div>
                             <div class="stat-heading">Sales</div>
                           </div>
                         </div>
@@ -116,4 +116,5 @@
     </div>
     <div class="clearfix"></div>
   </div>
+  <%= hidden_field_tag 'getdata', getdata_path%>
 </div>
