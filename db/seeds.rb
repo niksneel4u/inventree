@@ -9,7 +9,6 @@ admin_user = User.create!(
   first_name: 'admin',
   last_name: 'admin',
   password:'123123',
-  phone_number: 1231231230,
-  company_id: 6
+  phone_number: 1231231230
 )
 admin_user.add_role :admin

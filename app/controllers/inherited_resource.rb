@@ -1,10 +1,19 @@
 # frozen_string_literal: true
 
 class InheritedResource < ApplicationController
-  before_action :authenticate_user!
-
   def index
-    @collections ||= resource_class.all
+    @collections ||= policy_scope(resource_class).all
+  end
+
+  def new
+    @resource = resource_class.new
+    authorize @resource
+  end
+
+  def create
+    @resource = resource_class.new(resource_params)
+    authorize @resource
+    @resource.save!
   end
 
   private

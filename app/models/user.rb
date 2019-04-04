@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :company
+  belongs_to :company, optional: true
 
   validates :first_name, :last_name, presence: true
   validates :phone_number,

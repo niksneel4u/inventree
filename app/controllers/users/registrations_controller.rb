@@ -15,19 +15,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    params_init(params)
-    company = Company.create!(
-      name: company_params[:name],
-      contact_person_name: company_params[:contact_person_name],
-      contact_person_number: phone_number,
-      email: company_params[:email],
-      terms_and_conditions: true,
-      users_attributes: [user]
-    )
-    user = User.find_by(phone_number: company.contact_person_number)
-    user.add_role :client
-    sign_in(company.users.last)
-    redirect_to root_path
+    ActiveRecord::Base.transaction do
+      params_init(params)
+      company = Company.create!(
+        name: company_params[:name],
+        contact_person_name: company_params[:contact_person_name],
+        contact_person_number: phone_number,
+        email: company_params[:email],
+        terms_and_conditions: company_params[:terms_and_conditions],
+        users_attributes: [user]
+      )
+      user = User.find_by(phone_number: company.contact_person_number)
+      user.add_role :client
+      sign_in(user)
+      redirect_to root_path
+    end
+  rescue ActiveRecord::RecordInvalid
+    @resource = User.new(user_params)
+    render 'new'
   end
 
   def params_init(params)

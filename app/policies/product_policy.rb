@@ -1,0 +1,17 @@
+# frozen_string_literal: true
+
+class ProductPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      client_user? ? scope : (raise Pundit::NotAuthorizedError)
+    end
+  end
+
+  def new?
+    client_user?
+  end
+
+  def create?
+    client_user?
+  end
+end

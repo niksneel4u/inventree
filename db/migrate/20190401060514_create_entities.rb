@@ -7,7 +7,6 @@ class CreateEntities < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-
-    add_index :entities, :name, unique: true
+    add_index :entities, 'lower(name)', name: 'index_entities_on_lower_name', unique: true
   end
 end

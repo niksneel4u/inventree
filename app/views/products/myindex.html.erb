@@ -1,0 +1,17 @@
+<div class="content">
+  <div class="animated fadeIn">
+    <div class="row">
+      <% @entitiesarray.each do |productentities| %>
+        <div class="col-md-4">
+          <div class="card">
+            <%= image_tag product_image(productentities['image']), size: '380x190',class: 'card-img-top'%>
+            <div class="card-body">
+              <h4 class="card-title mb-3"><%= productentities['price']%></h4>
+              <p class="card-text"><%= truncate(productentities['name'], length: 40)%></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

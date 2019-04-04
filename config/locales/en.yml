@@ -30,10 +30,16 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  url: URL
+  url: URLS
   name: Name
+  edit: Edit
+  delete: Delete
   add: Add
   action: Action
+  edit: Edit
+  show: Show
+  mapping: Mapping
+  url: URL
   entity:
     title: Entity
     add_entity: Add New Entity
@@ -45,4 +51,10 @@ en:
     add_url: Enter URL
   marketplace_mapping:
     title: Marketplace Mappings
+  product:
+    title: Product
+    add_url: Enter Product URL
+    add_product: Add New Product
+    fetch_latest_data: Fetch Latest Data
+  pundit: No access
     

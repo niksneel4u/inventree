@@ -2,11 +2,10 @@
   <nav class="navbar navbar-expand-sm navbar-default">
     <div id="main-menu" class="main-menu collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <%= active_link_to entities_path, wrap_tag: :li do %>
-          <i class="menu-icon fa fa-laptop"></i><%= t('entity.title') %>
-        <% end %>
-        <%= active_link_to marketplaces_path, wrap_tag: :li do %>
-          <i class="menu-icon fa fa-laptop"></i><%= t('marketplace.title') %>
+        <% if current_user.has_role?(:admin) %>
+          <%= render 'shared/admin_left_menu' %>
+        <% else %>
+          <%= render 'shared/client_left_menu' %>
         <% end %>
       </ul>
     </div>

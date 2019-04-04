@@ -6,5 +6,6 @@ class CreateMarketplaces < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :marketplaces, :website_url, unique: true
   end
 end

@@ -1,11 +1,34 @@
 # frozen_string_literal: true
 
 class MarketplacesController < InheritedResource
+  before_action :authenticate_user!
+
   def new
     @marketplace = Marketplace.new
+    authorize @marketplace
+  end
+
+  def destroy
+    @marketplace = Marketplace.find(params[:id])
+    @marketplace.destroy
+    redirect_to marketplaces_path
+  end
+
+  def edit
+    @marketplace = Marketplace.find(params[:id])
+  end
+
+  def update
+    @marketplace = Marketplace.find(params[:id])
+    if @marketplace.update(marketplace_params)
+      redirect_to marketplaces_path
+    else
+      render 'edit'
+    end
   end
 
   def add_mappings
+    @marketplace = Marketplace.find(params[:id])
     Entity.all.each do |entity|
       marketplace.marketplace_mappings.find_or_initialize_by(
         entity_id: entity.id
@@ -23,9 +46,9 @@ class MarketplacesController < InheritedResource
 
   def create
     @marketplace = Marketplace.new(marketplace_params)
-    authorize @marketplace, policy_class: MarketplacePolicy
+    authorize @marketplace
     if @marketplace.save!
-      flash[:alert] = 'Marketplace Created.'
+      flash[:notice] = 'Marketplace Created.'
       redirect_to marketplace_add_mappings_path(@marketplace)
     else
       render 'new'

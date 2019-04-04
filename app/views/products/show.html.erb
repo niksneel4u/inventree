@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Data From URL</strong>
+      </div>
+      <table class='table table-striped'>
+        <tbody>
+          <tr>
+            <td><%= t('url') %></td>
+            <% url = @product.product_url %>
+            <td title="<%= url %>"><%= link_to truncate(url, length: 40), url %></td>
+          </tr>
+          <% @product_entities.each do |product_entity|%>
+            <tr>
+              <td><%= entity_name(product_entity.entity_id) %></td>
+              <% value = product_entity.value %>
+              <td title="<%= value %>"><%= truncate(value, length: 40) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ require("channels")
 require ('jquery')
 require ('jquery.matchHeight.min')
 require ('jquery.validate.min')
+require ('bootstrap.min')
 require ('main')
 require ('form_validation')
 

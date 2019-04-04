@@ -14,7 +14,13 @@
     <%= render 'shared/left_menu' %>
     <div id="right-panel" class="right-panel">
       <%= render 'shared/header' %>
-      <%= yield %>
+      <div class="content">
+        <div class="animated fadeIn">
+          <%= render 'layouts/alerts' %>
+          <%= yield %>
+        </div>
+      </div>
+      <div class="clearfix"></div>
     </div>
   </body>
 </html>
