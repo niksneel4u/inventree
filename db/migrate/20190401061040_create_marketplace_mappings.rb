@@ -5,6 +5,7 @@ class CreateMarketplaceMappings < ActiveRecord::Migration[6.0]
       t.references :entity, foreign_key: true
       t.string :entity_identifier
       t.string :entity_identifier_value
+      t.boolean :block_present, default: false
 
       t.timestamps
     end

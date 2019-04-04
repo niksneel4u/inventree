@@ -40,6 +40,9 @@ en:
   show: Show
   mapping: Mapping
   url: URL
+  amazon: www.amazon.in
+  yes: 'yes'
+  no: 'no'
   entity:
     title: Entity
     add_entity: Add New Entity

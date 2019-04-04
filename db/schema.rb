@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_04_03_213454) do
     t.bigint "entity_id"
     t.string "entity_identifier"
     t.string "entity_identifier_value"
+    t.boolean "block_present", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["entity_id"], name: "index_marketplace_mappings_on_entity_id"

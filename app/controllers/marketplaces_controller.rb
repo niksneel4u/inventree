@@ -61,7 +61,7 @@ class MarketplacesController < InheritedResource
     params.require(:marketplace).permit(
       :name, :website_url,
       marketplace_mappings_attributes: %i[
-        id entity_id entity_identifier entity_identifier_value
+        id entity_id entity_identifier entity_identifier_value block_present
       ]
     )
   end

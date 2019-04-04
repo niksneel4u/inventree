@@ -3,7 +3,7 @@
 require 'mechanize'
 
 class Scraping
-  attr_reader :id
+  attr_reader :id, :entity_block
 
   def initialize(id)
     @id = id
@@ -11,17 +11,8 @@ class Scraping
 
   def collect_data
     marketplace_mappings.each do |mm|
-      value = if mm.entity.name == 'image'
-                get_image(mm)
-              else
-                begin
-                  page.search(
-                    "[#{mm.entity_identifier}='#{mm.entity_identifier_value}']"
-                  ).text.strip
-                rescue StandardError
-                  ''
-                end
-              end
+      @entity_block = page.search("[#{mm.entity_identifier}='#{mm.entity_identifier_value}']")
+      value = get_value_for_entity(mm)
       product.product_entities.find_or_initialize_by(
         entity_id: mm.entity_id
       ).tap do |product_entity|
@@ -32,22 +23,46 @@ class Scraping
 
   private
 
-  def get_image(mm)
-    binding.pry
-    comman_path = page.search("[#{mm.entity_identifier}='#{mm.entity_identifier_value}']")
-    if Addressable::URI.parse(product.product_url).host == 'www.amazon.in'
-      begin
-      comman_path.children[1].attr('src')
-      rescue StandardError
-        ''
-    end
+  def get_value_for_entity(marketplace_mappings)
+    return find_image_path if marketplace_mappings.entity.name == 'image'
+
+    find_entity_value(marketplace_mappings)
+  end
+
+  def find_entity_value(marketplace_mappings)
+    if marketplace_mappings.block_present
+      block_present_or_not
     else
       begin
-        comman_path.attr('style').value.split('(').last.split(')').first.gsub('128', '380')
+        entity_block.text.strip
       rescue StandardError
         ''
       end
     end
+  end
+
+  def block_present_or_not
+    entity_block.present? ? I18n.t('yes') : I18n.t('no')
+  end
+
+  def find_image_path
+    product_url.host == I18n.t('amazon') ? amzon_img_path : flipkart_img_path
+  end
+
+  def flipkart_img_path
+    entity_block.attr('style').value.split('(').last.split(')').first.gsub('128', '612')
+  rescue StandardError
+    ''
+  end
+
+  def amzon_img_path
+    entity_block.children[1].attr('src')
+  rescue StandardError
+    ''
+  end
+
+  def product_url
+    Addressable::URI.parse(product.product_url)
   end
 
   def product
