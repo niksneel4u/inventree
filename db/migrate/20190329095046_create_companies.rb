@@ -5,7 +5,7 @@ class CreateCompanies < ActiveRecord::Migration[6.0]
     create_table :companies do |t|
       t.string :name
       t.string :contact_person_name
-      t.integer :contact_person_number, null: false, default: ''
+      t.string :contact_person_number, null: false, default: ''
       t.string :email
       t.boolean :terms_and_conditions
       t.text :address

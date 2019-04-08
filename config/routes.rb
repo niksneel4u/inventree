@@ -7,14 +7,14 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  get 'product/list', to: 'products#myindex'
+  get 'products/list', to: 'products#myindex'
   get 'marketplaces/:id/add_mappings', to: 'marketplaces#add_mappings', as: 'marketplace_add_mappings'
   patch 'marketplaces/:id/save_mappings', to: 'marketplaces#save_mappings', as: 'marketplace_save_mappings'
   get 'products/:id/fetch_latest_data', to: 'products#fetch_latest_data', as: 'marketplace_fetch_latest_data'  
   resources :entities, :marketplaces, :products
 
   authenticated :user, ->(u) { u.has_role?(:client) } do
-    root to: "products#index", as: :client_root
+    root to: 'products#index', as: :client_root
   end
 
   root to: 'marketplaces#index'

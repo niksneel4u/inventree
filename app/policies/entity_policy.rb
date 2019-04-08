@@ -12,4 +12,20 @@ class EntityPolicy < ApplicationPolicy
   def create?
     admin_user?
   end
+
+  def index?
+    admin_user?
+  end
+
+  def edit?
+    admin_user?
+  end
+
+  def destroy?
+    admin_user?
+  end
+
+  def update?
+    admin_user?
+  end
 end

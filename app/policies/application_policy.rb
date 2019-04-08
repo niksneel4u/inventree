@@ -11,16 +11,12 @@ class ApplicationPolicy
     false
   end
 
-  def show?
-    false
+  def new?
+    create?
   end
 
   def create?
     false
-  end
-
-  def new?
-    create?
   end
 
   def update?
@@ -31,6 +27,10 @@ class ApplicationPolicy
     update?
   end
 
+  def show?
+    false
+  end
+
   def destroy?
     false
   end
@@ -39,7 +39,7 @@ class ApplicationPolicy
     attr_reader :user, :scope
 
     def initialize(user, scope)
-      raise Pundit::NotAuthorizedError, I18n.t('pundit') unless user
+      raise Pundit::NotAuthorizedError, I18n.t('pundit') unless (user || scope)
       @user = user
       @scope = scope
     end
