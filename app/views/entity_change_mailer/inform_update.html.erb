@@ -1,12 +1,14 @@
 <p>
-  Hello <%= @mail_detail[:name] %>,
+  Hello <%= @receiver_name %>,
 </p>
 <p>
-  We found following changes for <%= link_to 'product', @mail_detail[:url] %>. <br/> <br/>
+  We found following changes for <%= link_to 'product', @product_url %>. <br/> <br/>
   <ol>
-    <li>
-      <%= @mail_detail[:entity_name] %> has been changed from <%= @mail_detail[:old_value] %> to <%= @mail_detail[:new_value] %>
-    </li>
+    <% @changes.each do |entity_name, values| %>
+      <li>
+        <%= entity_name %> has been changed from '<%= values[0] %>' to '<%= values[1] %>'.
+      </li>
+    <% end %>
   </ol>
 </p>
 <p>
