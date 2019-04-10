@@ -31,13 +31,17 @@ gem 'mechanize'
 gem 'rolify'
 # Active link for left side menu
 gem 'active_link_to'
-gem 'audited'
 # for authorization
 gem 'pundit'
-
+# audit log for product entities
+gem 'audited'
+# Cron Jobs
+gem 'whenever'
+  
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gem 'rubocop-performance'
 end
 
 

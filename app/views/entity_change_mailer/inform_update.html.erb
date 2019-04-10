@@ -1,0 +1,15 @@
+<p>
+  Hello <%= @mail_detail[:name] %>,
+</p>
+<p>
+  We found following changes for <%= link_to 'product', @mail_detail[:url] %>. <br/> <br/>
+  <ol>
+    <li>
+      <%= @mail_detail[:entity_name] %> has been changed from <%= @mail_detail[:old_value] %> to <%= @mail_detail[:new_value] %>
+    </li>
+  </ol>
+</p>
+<p>
+ Thank you,<br/>
+ Inventree
+</p>

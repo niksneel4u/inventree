@@ -12,16 +12,28 @@ class Scraping
   def collect_data
     marketplace_mappings.each do |mm|
       @entity_block = page.search("[#{mm.entity_identifier}='#{mm.entity_identifier_value}']")
-      value = get_value_for_entity(mm)
+      @value = get_value_for_entity(mm)
       product.product_entities.find_or_initialize_by(
         entity_id: mm.entity_id
       ).tap do |product_entity|
-        product_entity.update!(value: value)
+        send_email_if_needed(product_entity)
+        product_entity.update(value: @value)
       end
     end
   end
 
   private
+
+  def send_email_if_needed(entity)
+    entity.value = @value
+    unless entity.changes.blank?
+      send_mails(entity) unless entity.changes[:value][0].blank?
+    end
+  end
+
+  def send_mails(entity)
+    EntityChangeMailer.inform_update(entity).deliver_now
+  end
 
   def get_value_for_entity(marketplace_mappings)
     return find_image_path if marketplace_mappings.entity.name == 'image'

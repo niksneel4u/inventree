@@ -2,6 +2,7 @@
 
 class EntitiesController < InheritedResource
   before_action :authenticate_user!
+
   private
 
   def resource_params
