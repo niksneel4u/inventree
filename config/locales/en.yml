@@ -43,7 +43,8 @@ en:
     created: Product Created.
     updated: Product Updated.
     data_from_url: Data From URL
-  pundit: No access
+  pundit:
+    unauthorized: You are not authorized to perform this action.
   user:
     mobile_no_validation: Place enter valid Mobile Number
   receiver_mail:

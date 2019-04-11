@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ReceiverEmailsController < InheritedResource
-  before_action :authenticate_user!
 
   private
 

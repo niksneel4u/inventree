@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class EntitiesController < InheritedResource
-  before_action :authenticate_user!
 
   private
 

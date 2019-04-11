@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ProductsController < InheritedResource
-
-  before_action :authenticate_user!
   before_action :check_valide_uri, only: :create
 
   attr_reader :marketplace

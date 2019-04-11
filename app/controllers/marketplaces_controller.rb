@@ -3,8 +3,6 @@
 # Marketplaces Controller (flipkart, amazon) 
 class MarketplacesController < InheritedResource
 
-  before_action :authenticate_user!
-
   def add_mappings
     Entity.all.each do |entity|
       resource.marketplace_mappings.find_or_initialize_by(
