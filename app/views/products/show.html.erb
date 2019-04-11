@@ -9,13 +9,13 @@
           <tr>
             <td><%= t('url') %></td>
             <% url = @product.product_url %>
-            <td title="<%= url %>"><%= link_to truncate(url, length: Settings.truncate.fourty), url %></td>
+            <td title="<%= url %>"><%= link_to truncate(url, length: Settings.truncated_text.s_length), url %></td>
           </tr>
           <% @product_entities.each do |product_entity|%>
             <tr>
               <td><%= entity_name(product_entity.entity_id) %></td>
               <% value = product_entity.value %>
-              <td title="<%= value %>"><%= truncate(value, length: Settings.truncate.fourty) %></td>
+              <td title="<%= value %>"><%= truncate(value, length: Settings.truncated_text.s_length) %></td>
             </tr>
           <% end %>
         </tbody>

@@ -15,8 +15,10 @@ class MarketplacesController < InheritedResource
 
   def save_mappings
     if resource.update(resource_params)
+      flash[:notice] = t('marketplace_mapping.updated')
       redirect_to marketplaces_path
     else
+      flash[:error] = @resource.errors.full_messages.join(' ,')
       render 'add_mappings'
     end
   end
