@@ -25,7 +25,7 @@
             <tbody>
               <% @collection.each do |product| %>
                 <tr>
-                  <td><%=truncate(product.product_url, length: 100) %></td>
+                  <td><%=truncate(product.product_url, length: Settings.truncated_text.b_length) %></td>
                   <td>
                     <%= link_to product_path(product), title: t('show') do %>
                       <i class="fa fa-eye"></i>                    

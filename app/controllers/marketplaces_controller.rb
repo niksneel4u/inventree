@@ -6,18 +6,19 @@ class MarketplacesController < InheritedResource
   before_action :authenticate_user!
 
   def add_mappings
-    @marketplace = Marketplace.find(params[:id])
     Entity.all.each do |entity|
-      marketplace.marketplace_mappings.find_or_initialize_by(
+      resource.marketplace_mappings.find_or_initialize_by(
         entity_id: entity.id
       )
     end
   end
 
   def save_mappings
-    if marketplace.update(resource_params)
+    if resource.update(resource_params)
+      flash[:notice] = t('marketplace_mapping.updated')
       redirect_to marketplaces_path
     else
+      flash[:error] = @resource.errors.full_messages.join(' ,')
       render 'add_mappings'
     end
   end
@@ -33,13 +34,9 @@ class MarketplacesController < InheritedResource
     )
   end
 
-  def marketplaces
-    @marketplaces ||= Marketplace.all
-  end
-
-  def marketplace
-    @marketplace ||= marketplaces.find_by(id: params[:id])
-  end
+  # def marketplace
+  #   @marketplace ||= collection.find_by(id: params[:id])
+  # end
 
   def after_create_path
     marketplace_add_mappings_path(@resource)

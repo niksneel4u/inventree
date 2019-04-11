@@ -2532,3 +2532,7 @@ footer.site-footer {
 .navbar-header {
   height: 54px;
 }
+.img-size{
+  height: 190px;
+  width: 380px;
+}
