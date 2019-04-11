@@ -34,6 +34,8 @@ gem 'active_link_to'
 gem 'audited'
 # for authorization
 gem 'pundit'
+# settings for development and production
+gem 'config'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

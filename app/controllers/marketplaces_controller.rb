@@ -33,12 +33,8 @@ class MarketplacesController < InheritedResource
     )
   end
 
-  def marketplaces
-    @marketplaces ||= Marketplace.all
-  end
-
   def marketplace
-    @marketplace ||= marketplaces.find_by(id: params[:id])
+    @marketplace ||= collection.find_by(id: params[:id])
   end
 
   def after_create_path

@@ -14,10 +14,9 @@ class InheritedResource < ApplicationController
   def create
     @resource = resource_class.new(resource_params)
     authorize @resource
-    @resource.save!
-    redirect_to after_create_path
-  rescue => e
-    flash[:error] = @resource.errors.full_messages.join(' ,')
+    respond_with_flash
+  rescue
+    flash_for_error
     render 'new'
   end
 
@@ -27,8 +26,10 @@ class InheritedResource < ApplicationController
 
   def update
     resource.update!(resource_params)
+    flash[:notice] = t("#{downcase_class}.updated")
     redirect_to resource_index_path
   rescue
+    flash_for_error
     render 'edit'
   end
 
@@ -43,6 +44,10 @@ class InheritedResource < ApplicationController
     class_name.downcase
   end
 
+  def flash_for_error
+    flash[:error] = @resource.errors.full_messages.join(' ,')
+  end
+
   def class_name
     self.class.name.demodulize.sub(/Controller$/, '').singularize
   end
@@ -54,6 +59,12 @@ class InheritedResource < ApplicationController
     rescue NameError
       nil
     end
+  end
+
+  def respond_with_flash
+    @resource.save!
+    flash[:notice] = t("#{downcase_class}.created")
+    redirect_to after_create_path
   end
 
   def resource_index_path
