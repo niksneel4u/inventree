@@ -30,4 +30,12 @@ class MarketplacePolicy < ApplicationPolicy
   def update?
     admin_user?
   end
+
+  def add_mappings?
+    admin_user?
+  end
+
+  def save_mappings?
+    admin_user?
+  end
 end
