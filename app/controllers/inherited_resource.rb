@@ -84,4 +84,8 @@ class InheritedResource < ApplicationController
       authorize resource
     end
   end
+
+  def required_params
+    params.require(downcase_class.to_sym)
+  end
 end

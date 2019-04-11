@@ -24,17 +24,13 @@ class MarketplacesController < InheritedResource
   private
 
   def resource_params
-    params.require(:marketplace).permit(
+    required_params.permit(
       :name, :website_url,
       marketplace_mappings_attributes: %i[
         id entity_id entity_identifier entity_identifier_value block_present
       ]
     )
   end
-
-  # def marketplace
-  #   @marketplace ||= collection.find_by(id: params[:id])
-  # end
 
   def after_create_path
     marketplace_add_mappings_path(@resource)

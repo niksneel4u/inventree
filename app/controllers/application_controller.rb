@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_company
 
   private
-  unauthorized
+
   def unauthorized_user(exception)
     flash[:error] = t('pundit.unauthorized')
     redirect_to(request.referrer || root_path)

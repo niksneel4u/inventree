@@ -5,6 +5,6 @@ class EntitiesController < InheritedResource
   private
 
   def resource_params
-    params.require(:entity).permit(:name)
+    required_params.permit(:name)
   end
 end

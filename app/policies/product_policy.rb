@@ -3,7 +3,6 @@
 class ProductPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      
       client_user? ? scope : (raise Pundit::NotAuthorizedError)
     end
   end

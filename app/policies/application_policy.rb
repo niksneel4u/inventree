@@ -2,7 +2,7 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    raise Pundit::NotAuthorizedError, I18n.t('pundit.unauthorized') unless (user && scope)
+    raise Pundit::NotAuthorizedError, I18n.t('pundit.unauthorized') unless (user && record)
     @user = user
     @record = record
   end
