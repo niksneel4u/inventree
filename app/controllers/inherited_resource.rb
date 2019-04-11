@@ -14,6 +14,7 @@ class InheritedResource < ApplicationController
   def create
     @resource = resource_class.new(resource_params)
     authorize @resource
+    @resource.save!
     respond_with_flash
   rescue
     flash_for_error
@@ -41,7 +42,7 @@ class InheritedResource < ApplicationController
   private
 
   def downcase_class
-    class_name.downcase
+    class_name.underscore
   end
 
   def flash_for_error

@@ -47,8 +47,9 @@ en:
     unauthorized: You are not authorized to perform this action.
   user:
     mobile_no_validation: Place enter valid Mobile Number
-  receiver_mail:
+  receiver_email:
     title : E-mails Settings
     add: Add new Email
     add_email: Enter E-mail Address
     add_person_name: Enter Person Name
+    created: E-mail Added
