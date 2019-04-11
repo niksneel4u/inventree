@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <div class='row'>
+            <div class="col-sm-4">
+              <%= t('entity.title') %>
+            </div>
+            <div class="col-sm-8 text-right">
+              <%= link_to new_entity_path, class: 'btn btn-sm btn-primary pull-right' do %>
+                <i class="fa fa-plus"></i> <%= t('add') %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th><%= t('name') %></th>
+                  <th><%= t('action') %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @collection.each do |entity| %>
+                  <tr>
+                    <td><%= entity.name %></td>
+                    <td>
+                      <%= link_to edit_entity_path(entity), title: t('edit') do %>
+                        <i class="fa fa-edit"></i>
+                      <% end %>
+                      <%= link_to entity_path(entity), title: t('delete'),
+                      method: :delete, data: { confirm: 'Are you sure?' },
+                      remote: true do %>
+                        <i class="fa fa-trash-o"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

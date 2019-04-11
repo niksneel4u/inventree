@@ -65,4 +65,4 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 *.keep
-*.yml
+config/database.yml

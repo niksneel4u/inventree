@@ -1,0 +1,50 @@
+en:
+  # activerecord:
+  #  attributes:
+  #     marketplace: 
+  #       website_url: Marketplace URL
+  url: URLS
+  name: Name
+  edit: Edit
+  delete: Delete
+  add: Add
+  action: Action
+  edit: Edit
+  show: Show
+  mapping: Mapping
+  url: URL
+  amazon: www.amazon.in
+  "yes": "yes"
+  "no": "no"
+  entity:
+    title: Entity
+    add_entity: Add New Entity
+    entity_name: Enter Entity Name
+    created: Entity Created.
+    edit_antity: Edit Entity
+    updated: Entity Updated.
+    type: Entity Type
+    identifier: Entity Identifier
+    identifier_value: Entity Identifier Value
+    block: Block Present or not
+  marketplace:
+    title: Marketplace
+    add_market: Add Market Place
+    marketplace_name: Enter Marketplace Name
+    add_url: Enter URL
+    created: Marketplace Created.
+    updated: Marketplace Updated.
+  marketplace_mapping:
+    title: Marketplace Mappings
+    updated: Marketplace Mappings Updated.
+  product:
+    title: Product
+    add_url: Enter Product URL
+    add_product: Add New Product
+    fetch_latest_data: Fetch Latest Data
+    created: Product Created.
+    updated: Product Updated.
+    data_from_url: Data From URL
+  pundit: No access
+  user:
+    mobile_no_validation: Place enter valid Mobile Number

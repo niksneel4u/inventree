@@ -26,6 +26,12 @@ export default class extends Controller {
         minlength: 6,
         maxlength: 15
       },
+      'user[password_confirmation]': {
+        required: requiredRule,
+        minlength: 6,
+        maxlength: 15,
+        equalTo: "#user_password"
+      }
     };
 
     var errorMessages = {

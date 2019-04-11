@@ -1,7 +1,7 @@
 Inventree = {};
 $.noConflict();
 
-jQuery(document).ready(function($) {
+jQuery(document).on('turbolinks:load', function(){
 
 	"use strict";
 
@@ -10,9 +10,6 @@ jQuery(document).ready(function($) {
 	});
 
 	jQuery('.selectpicker').selectpicker;
-
-
-	
 
 	$('.search-trigger').on('click', function(event) {
 		event.preventDefault();

@@ -22,9 +22,20 @@ gem 'bootsnap', '>= 1.4.1', require: false
 # use for authentication
 gem 'devise'
 # use for css
-gem "stroke-seven-rails"
+gem 'stroke-seven-rails'
 #use for icons
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+# use it for scaping
+gem 'mechanize'
+# identify user
+gem 'rolify'
+# Active link for left side menu
+gem 'active_link_to'
+gem 'audited'
+# for authorization
+gem 'pundit'
+# settings for development and production
+gem 'config'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

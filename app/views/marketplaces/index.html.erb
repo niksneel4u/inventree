@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <div class='row'>
+          <div class="col-sm-4">
+            <%= t('marketplace.title') %>
+          </div>
+          <div class="col-sm-8 text-right">
+            <%= link_to new_marketplace_path, class: 'btn btn-sm btn-primary pull-right' do %>
+              <i class="fa fa-plus"></i> <%= t('add') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><%= t('name') %></th>
+                <th><%= t('url') %></th>
+                <th><%= t('action') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @collection.each do |marketplace| %>
+                <tr>
+                  <td><%= marketplace.name %></td>
+                  <td><%= link_to marketplace.website_url, marketplace.website_url, target: '_blank' %></td>
+                  <td>
+                    <%= link_to marketplace_add_mappings_path(marketplace), title: t('mapping') do %>
+                      <i class="fa fa-list-ul"></i>
+                    <% end %>
+                    <%= link_to edit_marketplace_path(marketplace), title: t('edit') do %>
+                      <i class="fa fa-edit"></i>
+                    <% end %>
+                    <%= link_to marketplace_path(marketplace), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, title: t('delete') do %>
+                      <i class="fa fa-trash-o"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
