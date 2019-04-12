@@ -2536,3 +2536,20 @@ footer.site-footer {
   height: 190px;
   width: 380px;
 }
+.timeline > li > .timeline-item > .time {
+  color: #999;
+  float: right;
+  padding: 10px;
+  font-size: 12px;}
+
+.timeline > .time-label > span {
+  font-weight: 600;
+  padding: 5px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 4px;}
+
+.audit-heading {
+  line-height: 30px;
+  font-size: 21px;
+}

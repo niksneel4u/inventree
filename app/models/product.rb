@@ -6,6 +6,9 @@ class Product < ApplicationRecord
   has_many :product_entities, dependent: :destroy
   after_create :call_scraping_job
 
+  audited
+  has_associated_audits
+
   def call_scraping_job
     ScrapingJob.perform_now(id)
   end

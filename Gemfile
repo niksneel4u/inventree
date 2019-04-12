@@ -34,11 +34,13 @@ gem 'active_link_to'
 # for authorization
 gem 'pundit'
 # audit log for product entities
-gem 'audited'
+gem 'audited', git: 'git@github.com:NeelTandel-BTC/audited.git'
 # Cron Jobs
 gem 'whenever'
 # settings for development and production
 gem 'config'
+# for pagination
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
