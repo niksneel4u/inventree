@@ -3,13 +3,13 @@
 # ApplicationController
 class ApplicationController < ActionController::Base
   include Pundit
-  rescue_from Pundit::NotAuthorizedError, Pundit::NotDefinedError, with: :user_not_authorized
+  rescue_from Pundit::NotAuthorizedError, Pundit::NotDefinedError, with: :unauthorized_user
   protect_from_forgery
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
     if resource.has_role?('admin')
-      marketplaces_path
+      entities_path
     else
       products_path
     end
@@ -29,8 +29,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def user_not_authorized(exception)
-    flash[:error] = t('pundit')
+  def unauthorized_user(exception)
+    flash[:error] = t('pundit.unauthorized')
     redirect_to(request.referrer || root_path)
   end
 end

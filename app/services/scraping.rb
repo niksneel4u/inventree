@@ -10,18 +10,32 @@ class Scraping
   end
 
   def collect_data
+    data_changes = {}
     marketplace_mappings.each do |mm|
-      @entity_block = page.search("[#{mm.entity_identifier}='#{mm.entity_identifier_value}']")
-      value = get_value_for_entity(mm)
+      values_from_scraping(mm)
       product.product_entities.find_or_initialize_by(
         entity_id: mm.entity_id
       ).tap do |product_entity|
-        product_entity.update!(value: value)
+        changes_in_entity(product_entity, data_changes)
       end
     end
+    EntityChangeMailer.inform_update(product_id: product.id, changes: data_changes).deliver_now
   end
 
   private
+
+  def values_from_scraping(mpm)
+    @entity_block = page.search("[#{mpm.entity_identifier}='#{mpm.entity_identifier_value}']")
+    @value = get_value_for_entity(mpm)
+  end
+
+  def changes_in_entity(product_entity, data_changes)
+    product_entity.value = @value
+    unless product_entity.changes.blank? || product_entity.new_record?
+      data_changes[product_entity.entity.name] = product_entity.changes['value']
+    end
+    product_entity.update(value: @value)
+  end
 
   def get_value_for_entity(marketplace_mappings)
     return find_image_path if marketplace_mappings.entity.name == 'image'

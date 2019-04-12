@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ProductsController < InheritedResource
-
-  before_action :authenticate_user!
   before_action :check_valide_uri, only: :create
 
   attr_reader :marketplace
@@ -36,7 +34,7 @@ class ProductsController < InheritedResource
   private
 
   def resource_params
-    params.require(:product).permit(:product_url, :marketplace_id)
+    required_params.permit(:product_url, :marketplace_id)
   end
 
   def resource_class
@@ -55,7 +53,7 @@ class ProductsController < InheritedResource
       flash[:error] = 'URL is not in marketplace list'
       render('new') && return
     else
-      params.require(:product)[:marketplace_id] = @marketplace.id
+      required_params[:marketplace_id] = @marketplace.id
     end
   end
 end

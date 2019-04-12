@@ -1,9 +1,7 @@
 en:
-  # activerecord:
-  #  attributes:
-  #     marketplace: 
-  #       website_url: Marketplace URL
+  subject: 'Inventree: Changes in one of the listed products.'
   url: URLS
+  email: E-mail
   name: Name
   edit: Edit
   delete: Delete
@@ -45,6 +43,13 @@ en:
     created: Product Created.
     updated: Product Updated.
     data_from_url: Data From URL
-  pundit: No access
+  pundit:
+    unauthorized: You are not authorized to perform this action.
   user:
     mobile_no_validation: Place enter valid Mobile Number
+  receiver_email:
+    title : E-mails Settings
+    add: Add new Email
+    add_email: Enter E-mail Address
+    add_person_name: Enter Person Name
+    created: E-mail Added

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ProductPolicy < ApplicationPolicy
+class ReceiverEmailPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       client_user? ? scope : (raise Pundit::NotAuthorizedError)
@@ -20,6 +20,14 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def show?
+    client_user?
+  end
+
+  def edit?
+    client_user?
+  end
+
+  def update?
     client_user?
   end
 end
