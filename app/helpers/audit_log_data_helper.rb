@@ -8,14 +8,7 @@ module AuditLogDataHelper
   end
 
   def audit_message(audit)
-    case audit.auditable_type
-    when 'Return'
-      return_audit_message(audit)
-    when 'SkuMapping'
-      product_merge_audit_message(audit)
-    else
-      default_audit_message(audit)
-    end
+    default_audit_message(audit)
   end
 
   def default_audit_message(audit)
@@ -64,14 +57,13 @@ module AuditLogDataHelper
       if audit.auditable_type == 'ProductEntity'
         changes = audit.audited_changes
         entity_name = ProductEntity.find(audit.auditable_id).entity.name.titleize rescue ''
-        value = changes['value']
         message += "<li>
           Changed <b>#{entity_name}</b> from '#{audited_change_values[0]}' to '#{audited_change_values[1]}'
         </li>"
       else
-          message += default_value_update_message(
-            audit, audited_change, audited_change_values
-          )
+        message += default_value_update_message(
+          audit, audited_change, audited_change_values
+        )
       end
     end
     message += '</ul>'
@@ -81,15 +73,15 @@ module AuditLogDataHelper
   def default_value_update_message(audit, audited_change, audited_change_values)
     return '' if audited_change_values.nil?
 
-    field = audit_log_field_name(audit, audited_change[0])
+    field = audited_change[0].titleize
 
     # For normal drop-down data will be : {"group_id"=>[5(old), 2(new)]}
     # For multi-select data will be : {"size"=>[[], ["small"]]}
-    values =  if foreign_key?(audited_change[0])
-                field.constantize.find(audited_change_values).pluck(:name)
-              else
-                audit_change_values(audited_change_values)
-              end
+    values = if foreign_key?(audited_change[0])
+              field.constantize.find(audited_change_values).pluck(:name)
+            else
+              audit_change_values(audited_change_values)
+            end
 
     "<li>#{I18n.t(
       'audit_logs.default_update',
@@ -101,20 +93,6 @@ module AuditLogDataHelper
 
   def foreign_key?(field)
     (field =~ /_id/).present?
-  end
-
-  def audit_log_field_name(audit, column)
-    # This is to change the field Name In Audit Log Message.
-    # You can put model name in when case with the hash of columns names
-    # which contains column name as key and desired name as value
-    column_hash = case audit.auditable_type
-                  when 'Beacon'
-                    {
-                      device_token: 'ID',
-                      name: 'Unit Name'
-                    }
-                  end
-    column_hash.present? ? (column_hash[column.to_sym] || column.titleize) : column.titleize
   end
 
   def audit_change_values(audit_change_values)
@@ -133,32 +111,9 @@ module AuditLogDataHelper
     end
   end
 
-  def return_audit_message(audit)
-    case audit.action
-    when 'create'
-      return_record = audit.auditable
-      "<ul><li>#{I18n.t('audit_logs.returns.created', order_id: return_record.order_id, order_item_id: return_record.order_item_id)}</li></ul>"
-    when 'update'
-      default_update_message(audit)
-    end
-  end
-
   def attribute_value(associated_record)
     resource_name, resource_id = associated_record
     resource_class = resource_name.titleize.constantize
     resource_class.find(resource_id).name
-  end
-
-  def product_merge_audit_message(audit)
-    audited_changes = audit.audited_changes
-    new_sku = audited_changes['new_sku_value']
-    old_sku = audited_changes['old_sku_value']
-    "<ul>
-      <li>#{I18n.t(
-        'audit_logs.merge_sku',
-        old_sku: old_sku,
-        new_sku: new_sku
-      )}</li>
-    </ul>"
   end
 end

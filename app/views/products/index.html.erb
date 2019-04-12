@@ -27,7 +27,7 @@
                 <tr>
                   <td><%=truncate(product.product_url, length: Settings.truncated_text.b_length) %></td>
                   <td>
-                    <%= link_to product_audits_path(product), title: t('audited') do %>
+                    <%= link_to product_audits_path(product), title: t('audits') do %>
                       <i class="fa fa-clock-o"></i>                    
                     <% end %>
                     <%= link_to product_path(product), title: t('show') do %>
