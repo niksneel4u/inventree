@@ -24,8 +24,8 @@ module Inventree
       address: 'smtp.gmail.com',
       port: 587,
       authentication: 'plain',
-      user_name: 'lmsbotree@gmail.com',
-      password: 'lms@botree',
+      user_name: Rails.application.credentials.dig(:mailer, :email),
+      password: Rails.application.credentials.dig(:mailer, :password),
       domain: 'gmail.com',
       enable_starttls_auto: true
     }
