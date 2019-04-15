@@ -41,6 +41,8 @@ gem 'whenever'
 gem 'config'
 # for pagination
 gem 'kaminari'
+# add sidekiq for background work
+gem 'sidekiq'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

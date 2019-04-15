@@ -32,7 +32,7 @@ class ProductsController < InheritedResource
     redirect_to product_path(@product)
   end
 
-  def show_audits
+  def audits
     @audits_heading = t('audit_title')
     render_audit_logs(audit_logs)
   end

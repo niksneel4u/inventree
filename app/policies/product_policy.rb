@@ -23,7 +23,7 @@ class ProductPolicy < ApplicationPolicy
     client_user?
   end
 
-  def show_audits?
+  def audits?
     client_user?
   end
 end

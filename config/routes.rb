@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
 
   get 'products/list', to: 'products#myindex'
-  get 'products/:id/audits', to: 'products#show_audits', as: 'product_audits'
+  get 'products/:id/audits', to: 'products#audits', as: 'product_audits'
   get 'marketplaces/:id/add_mappings', to: 'marketplaces#add_mappings', as: 'marketplace_add_mappings'
   patch 'marketplaces/:id/save_mappings', to: 'marketplaces#save_mappings', as: 'marketplace_save_mappings'
   get 'products/:id/fetch_latest_data', to: 'products#fetch_latest_data', as: 'marketplace_fetch_latest_data'  

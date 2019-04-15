@@ -10,6 +10,6 @@ class Product < ApplicationRecord
   has_associated_audits
 
   def call_scraping_job
-    ScrapingJob.perform_now(id)
+    ScrapingJob.perform_later(id)
   end
 end

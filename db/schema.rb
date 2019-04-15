@@ -56,13 +56,6 @@ ActiveRecord::Schema.define(version: 2019_04_11_093212) do
     t.index "lower((name)::text)", name: "index_entities_on_lower_name", unique: true
   end
 
-  create_table "mail_lists", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "marketplace_mappings", force: :cascade do |t|
     t.bigint "marketplace_id"
     t.bigint "entity_id"
