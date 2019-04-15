@@ -4,6 +4,11 @@
 class InheritedResource < ApplicationController
   def index
     collection
+    @collection = collection.page(params[:page]).per(Settings.pagination.per_page)
+    respond_to do |format|
+      format.html
+      format.js { render 'shared/index' }
+    end
   end
 
   def new

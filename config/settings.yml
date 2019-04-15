@@ -1,3 +1,5 @@
 truncated_text:
   s_length: 40
   b_length: 100
+pagination:
+  per_page: 5

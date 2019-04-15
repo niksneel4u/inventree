@@ -2549,3 +2549,9 @@ footer.site-footer {
   line-height: 30px;
   font-size: 21px;
 }
+.tabPagonation{width: 100%;  font-size: 13px;}
+.tabPagonation ul{justify-content: right;}
+@media all and (max-width: 767px){
+  .tabPagonation ul {justify-content: center;}
+  p.tablecount {text-align: center;}
+}
