@@ -4,6 +4,7 @@
 class MarketplacesController < InheritedResource
 
   def add_mappings
+    resource
     Entity.all.each do |entity|
       resource.marketplace_mappings.find_or_initialize_by(
         entity_id: entity.id
