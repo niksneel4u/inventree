@@ -2,7 +2,7 @@ en:
   subject: 'Inventree: Changes in one of the listed products.'
   url: URLS
   audits: Audits
-  email: E-mail
+  email: E-Mail
   name: Name
   edit: Edit
   delete: Delete
@@ -16,6 +16,7 @@ en:
   system_auditer: Inventree System
   amazon: www.amazon.in
   back: Back
+  sign_out: "Sign out"
   "yes": "yes"
   "no": "no"
   entity:
@@ -52,11 +53,11 @@ en:
   user:
     mobile_no_validation: Place enter valid Mobile Number
   receiver_email:
-    title : E-mails Settings
+    title : E-Mail Settings
     add: Add new Email
-    add_email: Enter E-mail Address
+    add_email: Enter E-Mail Address
     add_person_name: Enter Person Name
-    created: E-mail Added
+    created: E-Mail Added
   audit_logs:
     title: 'Audit Logs'
     record_created: 'Created %{model}.'

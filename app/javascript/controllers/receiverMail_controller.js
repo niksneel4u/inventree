@@ -18,7 +18,7 @@ export default class extends Controller {
     var errorMessages = {
       'receiver_email[name]': 'Place Enter Name',
       'receiver_email[email]': {
-        required: 'place enter E-mail'
+        required: 'place enter E-Mail'
       }
     };
     Inventree.form.validate_form(signUpRules, errorMessages, '#receiver_mail');
