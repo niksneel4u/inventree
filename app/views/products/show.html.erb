@@ -8,7 +8,7 @@
         <tbody>
           <tr>
             <td><%= t('url') %></td>
-            <% url = @product.product_url %>
+            <% url = @resource.product_url %>
             <td title="<%= url %>"><%= link_to truncate(url, length: Settings.truncated_text.s_length), url %></td>
           </tr>
           <% @product_entities.each do |product_entity|%>

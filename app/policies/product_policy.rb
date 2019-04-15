@@ -26,4 +26,8 @@ class ProductPolicy < ApplicationPolicy
   def audits?
     client_user?
   end
+
+  def fetch_latest_data?
+    client_user?
+  end
 end
