@@ -20,16 +20,12 @@ class ProductsController < InheritedResource
   end
 
   def show
-    @product = resource_class.find(params[:id]).tap do |product|
-      authorize product
-    end
-    @product_entities = @product.product_entities
+    @product_entities = resource.product_entities
   end
 
   def fetch_latest_data
-    @product = resource_class.find(params[:id])
-    @product.call_scraping_job
-    redirect_to product_path(@product)
+    ScrapingJob.perform_now(resource.id)
+    redirect_to product_path(resource.id)
   end
 
   def audits

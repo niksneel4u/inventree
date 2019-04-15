@@ -4,12 +4,12 @@ class Product < ApplicationRecord
   belongs_to :marketplace
   belongs_to :company
   has_many :product_entities, dependent: :destroy
-  after_create :call_scraping_job
+  after_commit :call_scraping_job, on: :create
 
   audited
   has_associated_audits
 
-  def call_scraping_job
+  def call_scraping_jobs
     ScrapingJob.perform_later(id)
   end
 end
