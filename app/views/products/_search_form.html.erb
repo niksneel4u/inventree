@@ -1,0 +1,11 @@
+<%= search_form_for @q do |f| %>
+  <div class="row form-group">
+    <div class="col col-sm-4">
+      <%= f.search_field :product_url_cont, placeholder: t('product.produt_search'), class: 'form-control' %>
+    </div>
+    <div class="col col-sm-4">
+      <%= f.submit class: 'btn btn-primary btn-sm' %>
+    </div>
+    <div class="col col-sm-4"></div>
+  </div>
+<% end %>

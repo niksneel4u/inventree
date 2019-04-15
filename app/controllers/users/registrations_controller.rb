@@ -11,15 +11,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    @company = Company.new(company_params)
     ActiveRecord::Base.transaction do
-      company = Company.create(company_params)
-      user = company.users.find_by(phone_number: company.contact_person_number)
+      @company.save!
+      user = @company.users.find_by(phone_number: @company.contact_person_number)
       user.add_role :client
       sign_in(user)
       redirect_to root_path
     end
   rescue ActiveRecord::RecordInvalid
-    @resource = User.new(user_params)
+    flash[:error] = @company.errors.full_messages.join(' ,')
+    build_resource(user_params)
     render 'new'
   end
 
