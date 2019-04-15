@@ -2153,10 +2153,6 @@ footer.site-footer {
     .calender-cont.widget-calender .fc-day-grid-container {
       max-height: 250px !important;
       overflow: hidden !important; }
-
-@media (max-width: 1680px) {
-  .timeline li {
-    padding: 2px 0; } }
 @media (max-width: 1368px) {
   .twt-category {
     margin-bottom: 0; }
