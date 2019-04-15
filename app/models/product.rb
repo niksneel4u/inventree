@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   audited
   has_associated_audits
 
-  def call_scraping_jobs
+  def call_scraping_job
     ScrapingJob.perform_later(id)
   end
 end
