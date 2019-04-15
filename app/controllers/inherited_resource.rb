@@ -3,7 +3,7 @@
 # comman methods for crud
 class InheritedResource < ApplicationController
   def index
-    @q = resource_class.ransack(params[:q])
+    @q = collection.ransack(params[:q])
     @collection = @q.result.page(params[:page]).per(Settings.pagination.per_page)
     respond_to do |format|
       format.html

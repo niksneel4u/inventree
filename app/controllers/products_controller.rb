@@ -56,8 +56,8 @@ class ProductsController < InheritedResource
   def check_valide_uri
     find_marketplace
     if @marketplace.blank?
-      flash[:error] = 'URL is not in marketplace list'
-      render('new') && return
+      flash[:error] = t('product.valide_marketplace')
+      redirect_to new_product_path && return
     else
       required_params[:marketplace_id] = @marketplace.id
     end

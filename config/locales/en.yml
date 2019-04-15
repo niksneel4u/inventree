@@ -51,6 +51,7 @@ en:
     updated: Product Updated.
     data_from_url: Data From URL
     produt_search: Search By Product URL
+    valide_marketplace: URL is not in marketplace list
   pundit:
     unauthorized: You are not authorized to perform this action.
   user:

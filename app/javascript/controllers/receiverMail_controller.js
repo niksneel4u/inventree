@@ -21,6 +21,6 @@ export default class extends Controller {
         required: 'place enter E-Mail'
       }
     };
-    Inventree.form.validate_form(signUpRules, errorMessages, '#receiver_mail');
+    Inventree.form.validate_form(signUpRules, errorMessages, '#receiver_email');
   }
 }
