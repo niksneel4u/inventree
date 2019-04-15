@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < InheritedResource
+  include AuditLog
   before_action :check_valide_uri, only: :create
 
   attr_reader :marketplace
@@ -31,7 +32,16 @@ class ProductsController < InheritedResource
     redirect_to product_path(@product)
   end
 
+  def show_audits
+    @audits_heading = t('audit_title')
+    render_audit_logs(audit_logs)
+  end
+
   private
+
+  def audit_logs
+    resource.own_and_associated_audits
+  end
 
   def resource_params
     required_params.permit(:product_url, :marketplace_id)

@@ -1,6 +1,7 @@
 en:
   subject: 'Inventree: Changes in one of the listed products.'
   url: URLS
+  audits: Audits
   email: E-mail
   name: Name
   edit: Edit
@@ -11,7 +12,10 @@ en:
   show: Show
   mapping: Mapping
   url: URL
+  audit_title: Product
+  system_auditer: Inventree System
   amazon: www.amazon.in
+  back: Back
   "yes": "yes"
   "no": "no"
   entity:
@@ -53,3 +57,8 @@ en:
     add_email: Enter E-mail Address
     add_person_name: Enter Person Name
     created: E-mail Added
+  audit_logs:
+    title: 'Audit Logs'
+    record_created: 'Created %{model}.'
+    record_destroyed: 'Deleted %{model}.'
+    default_update: "changed %{field} from '%{old_value}' to '%{new_value}'."
