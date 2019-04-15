@@ -43,6 +43,8 @@ gem 'config'
 gem 'kaminari'
 # add sidekiq for background work
 gem 'sidekiq'
+# ransack for searching in database
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

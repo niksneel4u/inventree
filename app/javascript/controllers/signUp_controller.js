@@ -39,7 +39,7 @@ export default class extends Controller {
       'company[contact_person_name]': 'Place Enter Contact Person Name',
       'company[email]': {
         required: 'Place Enter E-Mail',
-        email: true
+        email: 'Enter Valid E-Mail Address'
       },
       'user[first_name]': 'Place Enter First Name',
       'user[last_name]': 'Place Enter First Name',

@@ -3,8 +3,8 @@
 # comman methods for crud
 class InheritedResource < ApplicationController
   def index
-    collection
-    @collection = collection.page(params[:page]).per(Settings.pagination.per_page)
+    @q = resource_class.ransack(params[:q])
+    @collection = @q.result.page(params[:page]).per(Settings.pagination.per_page)
     respond_to do |format|
       format.html
       format.js { render 'shared/index' }
@@ -21,7 +21,7 @@ class InheritedResource < ApplicationController
     authorize @resource
     @resource.save!
     respond_with_flash
-  rescue
+  rescue StandardError
     flash_for_error
     render 'new'
   end
@@ -34,7 +34,7 @@ class InheritedResource < ApplicationController
     resource.update!(resource_params)
     flash[:notice] = t("#{downcase_class}.updated")
     redirect_to resource_index_path
-  rescue
+  rescue StandardError
     flash_for_error
     render 'edit'
   end
@@ -62,8 +62,8 @@ class InheritedResource < ApplicationController
     @resource_class ||=  begin
       namespaced_class = self.class.name.demodulize.sub(/Controller$/, '').singularize
       namespaced_class.constantize
-    rescue NameError
-      nil
+                         rescue NameError
+                           nil
     end
   end
 
