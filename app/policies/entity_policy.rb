@@ -18,14 +18,24 @@ class EntityPolicy < ApplicationPolicy
   end
 
   def edit?
+    return false if default_entity?
     admin_user?
   end
 
   def destroy?
+    return false if default_entity?
     admin_user?
   end
 
   def update?
+    return false if default_entity?
     admin_user?
   end
+
+  private
+
+  def default_entity?
+    Entity::NON_DELETABLE_ENTITIES.include?(record.name)
+  end
+
 end

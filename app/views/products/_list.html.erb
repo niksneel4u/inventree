@@ -1,32 +1,43 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= t('url') %></th>
-      <th><%= t('action') %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @collection.each do |product| %>
+<div data-controller='product'>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%=truncate(product.product_url, length: Settings.truncated_text.b_length) %></td>
-        <td>
-          <%= link_to product_audits_path(product), title: t('audits') do %>
-            <i class="fa fa-clock-o"></i>                    
-          <% end %>
-          <%= link_to product_path(product), title: t('show') do %>
-            <i class="fa fa-eye"></i>                    
-          <% end %>
-          <%= link_to marketplace_fetch_latest_data_path(product), title: t('product.fetch_latest_data') do %>
-            <i class="fa fa-cloud-download"></i>
-          <% end %>
-          <%= link_to product_path(product), 
-            method: :delete, data: { confirm: 'Are you sure?' },
-            remote: true, title: t('delete') do %>
-            <i class="fa fa-trash-o"></i>                       
-          <% end %>
-        </td>
+        <th><%= t('name') %></th>
+        <th><%= t('price') %></th>
+        <th><%= t('product.status') %></th>
+      <th><%= t('action') %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= render 'shared/pagination' %>
+    </thead>
+    <tbody>
+      <% @collection.each do |product| %>
+        <tr>
+          <td><%=truncate(product.name, length: Settings.truncated_text.s_length) %></td>
+          <td><%= product.price %></td> 
+          <td>
+            <label class="switch">
+              <input type="checkbox" class="toggle-switch" data-action="change->product#changeStatus">
+              <span class="slider round"></span>
+            </label>
+          </td>        
+          <td>
+            <%= link_to product_audits_path(product), title: t('audits') do %>
+              <i class="fa fa-clock-o"></i>                    
+            <% end %>
+            <%= link_to product_path(product), title: t('show') do %>
+              <i class="fa fa-eye"></i>                    
+            <% end %>
+            <%= link_to marketplace_fetch_latest_data_path(product), title: t('product.fetch_latest_data') do %>
+              <i class="fa fa-cloud-download"></i>
+            <% end %>
+            <%= link_to product_path(product), 
+              method: :delete, data: { confirm: 'Are you sure?' },
+              remote: true, title: t('delete') do %>
+              <i class="fa fa-trash-o"></i>                       
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render 'shared/pagination' %>
+</div>

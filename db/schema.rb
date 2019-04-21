@@ -97,6 +97,10 @@ ActiveRecord::Schema.define(version: 2019_04_11_093212) do
 
   create_table "products", force: :cascade do |t|
     t.string "product_url"
+    t.string "name"
+    t.string "image"
+    t.bigint "price"
+    t.integer "status", default: 0
     t.bigint "marketplace_id"
     t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
