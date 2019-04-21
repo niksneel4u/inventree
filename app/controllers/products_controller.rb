@@ -39,16 +39,12 @@ class ProductsController < InheritedResource
     resource.own_and_associated_audits
   end
 
-  def resource_params
-    required_params.permit(:product_url, :marketplace_id)
-  end
-
   def resource_class
     policy_scope(current_company&.products)
   end
 
   def find_marketplace
-    addressable_url = Addressable::URI.parse(resource_params[:product_url])
+    addressable_url = Addressable::URI.parse(params[:product][:product_url])
     url = addressable_url.scheme + '://' + addressable_url.host
     @marketplace = Marketplace.find_by(website_url: url)
   end
