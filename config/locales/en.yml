@@ -50,7 +50,13 @@ en:
     created: Product Created.
     updated: Product Updated.
     data_from_url: Data From URL
-    produt_search: Search By Product URL
+    status: Status
+    active: Active
+    inactive: Inactive
+    search:
+      name: Search By Name
+      min_price: Min. Price
+      max_price: Max. Price
     valide_marketplace: URL is not in marketplace list
   pundit:
     unauthorized: You are not authorized to perform this action.
