@@ -1,4 +1,6 @@
 truncated_text:
   s_length: 40
 pagination:
+  products:
+    per_page: 6
   per_page: 5

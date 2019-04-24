@@ -19,6 +19,7 @@ en:
   sign_out: "Sign out"
   "yes": "yes"
   "no": "no"
+  currency: 'Rs. '
   entity:
     title: Entity
     add_entity: Add New Entity
@@ -57,6 +58,7 @@ en:
       name: Search By Name
       min_price: Min. Price
       max_price: Max. Price
+      marketplace: Search By Marketplace 
     valide_marketplace: URL is not in marketplace list
   pundit:
     unauthorized: You are not authorized to perform this action.

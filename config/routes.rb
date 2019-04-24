@@ -7,8 +7,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
-
-  get 'products/list', to: 'products#myindex'
+  patch 'products/:id/change_status', to: 'products#change_status', as: 'product_change_status'
   get 'products/:id/audits', to: 'products#audits', as: 'product_audits'
   get 'marketplaces/:id/add_mappings', to: 'marketplaces#add_mappings', as: 'marketplace_add_mappings'
   patch 'marketplaces/:id/save_mappings', to: 'marketplaces#save_mappings', as: 'marketplace_save_mappings'

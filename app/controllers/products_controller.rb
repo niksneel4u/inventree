@@ -6,19 +6,6 @@ class ProductsController < InheritedResource
 
   attr_reader :marketplace
 
-  # custom product list controller method
-  def myindex
-    @entitiesarray = []
-    @product = Product.all
-    @product.each do |product|
-      productwise_array = {}
-      product.product_entities.each do |e|
-        productwise_array[e.entity.name] = e.value
-      end
-      @entitiesarray << productwise_array
-    end
-  end
-
   def show
     @product_entities = resource.product_entities
   end
@@ -31,6 +18,14 @@ class ProductsController < InheritedResource
   def audits
     @audits_heading = t('audit_title')
     render_audit_logs(audit_logs)
+  end
+
+  def change_status
+    resource.toggle_status
+    flash.now[:notice] = "Produt #{resource.status.titleize}d."
+  rescue
+    flash.now[:error] = 'Oops! Something went wrong.'
+    resource
   end
 
   private
@@ -57,5 +52,9 @@ class ProductsController < InheritedResource
     else
       required_params[:marketplace_id] = @marketplace.id
     end
+  end
+
+  def per_page_resources
+    Settings.pagination.products.per_page
   end
 end

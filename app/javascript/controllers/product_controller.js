@@ -22,4 +22,13 @@ export default class extends Controller {
     };
     Inventree.form.validate_form(signInRules, errorMessages, '#product');
   }
+
+  changeStatus(){
+    $.ajax({
+      type: "PATCH",
+      url: '/products/' + $(event.target).val() + '/change_status',
+      dataType: 'script'
+    });
+
+  }
 }

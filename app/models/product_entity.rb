@@ -6,7 +6,7 @@ class ProductEntity < ApplicationRecord
 
   audited associated_with: :product
 
-  after_commit :add_entity_to_product, on: :create
+  after_commit :add_entity_to_product, on: %i[create update]
 
   def add_entity_to_product
     entity_name = entity.name

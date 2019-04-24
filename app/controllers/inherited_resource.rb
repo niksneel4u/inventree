@@ -4,7 +4,7 @@
 class InheritedResource < ApplicationController
   def index
     @q = collection.ransack(params[:q])
-    @collection = @q.result.page(params[:page]).per(Settings.pagination.per_page)
+    @collection = @q.result.page(params[:page]).per(per_page_resources)
     respond_to do |format|
       format.html
       format.js { render 'shared/index' }
@@ -116,5 +116,9 @@ class InheritedResource < ApplicationController
 
   def nested_params
     []
+  end
+
+  def per_page_resources
+    Settings.pagination.per_page
   end
 end
