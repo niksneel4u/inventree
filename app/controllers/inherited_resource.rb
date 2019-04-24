@@ -17,6 +17,7 @@ class InheritedResource < ApplicationController
   end
 
   def create
+    new
     @resource = resource_class.new(resource_params)
     authorize @resource
     @resource.save!
@@ -60,7 +61,7 @@ class InheritedResource < ApplicationController
 
   def resource_class
     @resource_class ||=  begin
-      namespaced_class = self.class.name.demodulize.sub(/Controller$/, '').singularize
+      namespaced_class = class_name
       namespaced_class.constantize
                          rescue NameError
                            nil
@@ -93,5 +94,27 @@ class InheritedResource < ApplicationController
 
   def required_params
     params.require(downcase_class.to_sym)
+  end
+
+  def resource_params
+    required_params.permit(permited_params + nested_params)
+  end
+
+  def permited_params
+    (
+      @resource.attributes.keys - default_negligible_params - negligible_params
+    ).map(&:to_sym)
+  end
+
+  def default_negligible_params
+    %w[id created_at updated_at]
+  end
+
+  def negligible_params
+    []
+  end
+
+  def nested_params
+    []
   end
 end
