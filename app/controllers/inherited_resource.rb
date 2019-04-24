@@ -97,10 +97,24 @@ class InheritedResource < ApplicationController
   end
 
   def resource_params
-    required_params.permit(permited_params)
+    required_params.permit(permited_params + nested_params)
   end
 
   def permited_params
-    (@resource.attributes.keys.- %w{id created_at updated_at}).map {|attribute| attribute.to_sym}
+    (
+      @resource.attributes.keys - default_negligible_params - negligible_params
+    ).map(&:to_sym)
+  end
+
+  def default_negligible_params
+    %w[id created_at updated_at]
+  end
+
+  def negligible_params
+    []
+  end
+
+  def nested_params
+    []
   end
 end

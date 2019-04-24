@@ -24,12 +24,10 @@ class MarketplacesController < InheritedResource
 
   private
 
-  def resource_params
-    required_params.permit(permited_params,
-      marketplace_mappings_attributes: %i[
-        id entity_id entity_identifier entity_identifier_value block_present
-      ]
-    )
+  def nested_params
+    marketplace_mappings_attributes: %i[
+      id entity_id entity_identifier entity_identifier_value block_present
+    ]
   end
 
   def after_create_path
