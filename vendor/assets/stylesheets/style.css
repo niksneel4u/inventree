@@ -2529,7 +2529,12 @@ footer.site-footer {
   height: 54px;
 }
 .img-size{
+  display: block;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
   height: 190px;
+  width: auto;
 }
 .timeline > li > .timeline-item > .time {
   color: #999;

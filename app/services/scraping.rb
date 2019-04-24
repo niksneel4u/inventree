@@ -60,7 +60,7 @@ class Scraping
   end
 
   def find_image_path
-    product_url.host == I18n.t('amazon') ? amzon_img_path : flipkart_img_path
+    product_url.host == I18n.t('amazon') ? amazon_img_path : flipkart_img_path
   end
 
   def flipkart_img_path
@@ -69,7 +69,7 @@ class Scraping
     ''
   end
 
-  def amzon_img_path
+  def amazon_img_path
     entity_block.children[1].attr('src')
   rescue StandardError
     ''

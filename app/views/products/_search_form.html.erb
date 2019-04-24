@@ -10,9 +10,9 @@
       <%= f.number_field :price_lteq, placeholder: t('product.search.max_price'), min: 0, class: 'form-control' %>
     </div>
     <div class="col col-sm-3">
-      <%= f.text_field :marketplace_name_cont, placeholder: t('product.search.marketplace'), class: 'form-control' %>
+      <%= f.select :marketplace_id_eq, options_for_select(marketplaces, params.dig(:q, :marketplace_id_eq)), { include_blank: t('product.search.marketplace') }, { class: 'form-control' } %>
     </div>
-    <div class="col col-sm-2">
+    <div class="col col-sm-2 text-right">
       <%= f.submit class: 'btn btn-primary btn-sm' %>
     </div>
   </div>
