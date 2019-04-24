@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-# Marketplaces Controller (flipkart, amazon) 
+# Marketplaces Controller (flipkart, amazon)
 class MarketplacesController < InheritedResource
-
   def add_mappings
     resource
     Entity.all.each do |entity|
@@ -25,8 +24,10 @@ class MarketplacesController < InheritedResource
   private
 
   def nested_params
-    marketplace_mappings_attributes: %i[
-      id entity_id entity_identifier entity_identifier_value block_present
+    [
+      marketplace_mappings_attributes: %i[
+        id entity_id entity_identifier entity_identifier_value block_present
+      ]
     ]
   end
 
