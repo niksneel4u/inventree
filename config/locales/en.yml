@@ -22,6 +22,7 @@ en:
   currency: 'Rs. '
   wrong: Oops! Something went wrong.
   are_you_sure: Are you sure?
+  image: image
   entity:
     title: Entity
     add_entity: Add New Entity

@@ -3,7 +3,7 @@
 require 'mechanize'
 
 class Scraping
-  attr_reader :id, :entity_block
+  attr_reader :id
 
   def initialize(id)
     @id = id
@@ -20,13 +20,18 @@ class Scraping
       end
     end
     EntityChangeMailer.inform_update(product_id: product.id, changes: data_changes).deliver_now
+    send_empty_node if empty_nodes.present?
   end
 
   private
 
+  def send_empty_node
+    AdminMailer.send_empty_node(empty_nodes: empty_nodes, product_id: product.id).deliver_now
+  end
+
   def values_from_scraping(mpm)
     @entity_block = page.search("[#{mpm.entity_identifier}='#{mpm.entity_identifier_value}']")
-    @value = get_value_for_entity(mpm)
+    @value = get_value_for_entity(mpm, @entity_block)
   end
 
   def changes_in_entity(product_entity, data_changes)
@@ -37,15 +42,20 @@ class Scraping
     product_entity.update(value: @value)
   end
 
-  def get_value_for_entity(marketplace_mappings)
-    return find_image_path if marketplace_mappings.entity.name == 'image'
+  def get_value_for_entity(marketplace_mapping, entity_block)
+    if entity_block.present?
+      return find_image_path(entity_block) if marketplace_mapping.entity.name == I18n.t('image')
 
-    find_entity_value(marketplace_mappings)
+      find_entity_value(marketplace_mapping, entity_block)
+    else
+      empty_nodes << marketplace_mapping.entity.name.titleize
+      ''
+    end
   end
 
-  def find_entity_value(marketplace_mappings)
-    if marketplace_mappings.block_present
-      block_present_or_not
+  def find_entity_value(marketplace_mapping, entity_block)
+    if marketplace_mapping.block_present
+      block_present_or_not(entity_block)
     else
       begin
         entity_block.text.strip
@@ -55,21 +65,21 @@ class Scraping
     end
   end
 
-  def block_present_or_not
+  def block_present_or_not(entity_block)
     entity_block.present? ? I18n.t('yes') : I18n.t('no')
   end
 
-  def find_image_path
-    product_url.host == I18n.t('amazon') ? amazon_img_path : flipkart_img_path
+  def find_image_path(entity_block)
+    product_url.host == I18n.t('amazon') ? amazon_img_path(entity_block) : flipkart_img_path(entity_block)
   end
 
-  def flipkart_img_path
+  def flipkart_img_path(entity_block)
     entity_block.attr('style').value.split('(').last.split(')').first.gsub('128', '612')
   rescue StandardError
     ''
   end
 
-  def amazon_img_path
+  def amazon_img_path(entity_block)
     entity_block.children[1].attr('src')
   rescue StandardError
     ''
@@ -97,5 +107,9 @@ class Scraping
 
   def page
     @page ||= agent.get(product.product_url)
+  end
+
+  def empty_nodes
+    @empty_nodes ||= []
   end
 end
