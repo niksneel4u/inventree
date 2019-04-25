@@ -20,6 +20,8 @@ en:
   "yes": "yes"
   "no": "no"
   currency: 'Rs. '
+  wrong: Oops! Something went wrong.
+  are_you_sure: Are you sure?
   entity:
     title: Entity
     add_entity: Add New Entity
@@ -54,6 +56,7 @@ en:
     status: Status
     active: Active
     inactive: Inactive
+    status_change: "Produt %{status}d."
     search:
       name: Search By Name
       min_price: Min. Price

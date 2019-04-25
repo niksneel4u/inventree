@@ -22,9 +22,9 @@ class ProductsController < InheritedResource
 
   def change_status
     resource.toggle_status
-    flash.now[:notice] = "Produt #{resource.status.titleize}d."
+    flash.now[:notice] = t('product.status_change', status: resource.status.titleize)
   rescue
-    flash.now[:error] = 'Oops! Something went wrong.'
+    flash.now[:error] = t('wrong')
     resource
   end
 
