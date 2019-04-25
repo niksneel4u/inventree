@@ -16,7 +16,7 @@
             <i class="fa fa-edit"></i>
           <% end %>
           <%= link_to receiver_email_path(email), 
-            method: :delete, data: { confirm: 'Are you sure?' },
+            method: :delete, data: { confirm: t('are_you_sure') },
             remote: true, title: t('delete') do %>
             <i class="fa fa-trash-o"></i>
           <% end %>

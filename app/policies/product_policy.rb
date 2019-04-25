@@ -30,4 +30,8 @@ class ProductPolicy < ApplicationPolicy
   def fetch_latest_data?
     client_user?
   end
+
+  def change_status?
+    client_user?
+  end
 end

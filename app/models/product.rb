@@ -15,4 +15,8 @@ class Product < ApplicationRecord
   def call_scraping_job
     ScrapingJob.perform_now(id)
   end
+
+  def toggle_status
+    active? ? inactive! : active!
+  end
 end
