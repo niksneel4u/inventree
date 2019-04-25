@@ -18,5 +18,4 @@ class EntityChangeMailer < ApplicationMailer
       mail to: receiver.email, subject: t('subject')
     end
   end
-
 end
