@@ -17,12 +17,25 @@
               <td><%= t('url') %></td>
               <td title="<%= url %>"><%= link_to truncate(url, length: Settings.truncated_text.s_length), url, target: '_blank' %></td>
             </tr>
+            <% name = @resource.name%>
+            <tr>
+              <td><%= t('name') %></td>
+              <td title="<%= name %>"><%= truncate(name, length: Settings.truncated_text.s_length) %></td>
+            </tr>
+            <% price = @resource.price%>
+
+            <tr>
+              <td><%= t('price') %></td>
+              <td><%= price_for_product(price) %></td>
+            </tr>
             <% @product_entities.each do |product_entity|%>
-              <tr>
-                <td><%= entity_name(product_entity.entity_id) %></td>
-                <% value = product_entity.value %>
-                <td title="<%= value %>"><%= truncate(value, length: Settings.truncated_text.s_length) %></td>
-              </tr>
+              <% unless Entity::NON_DELETABLE_ENTITIES.include?(product_entity.entity_name) %>
+                <tr>
+                  <td><%= entity_name(product_entity.entity_id) %></td>
+                  <% value = product_entity.value %>
+                  <td title="<%= value %>"><%= truncate(value, length: Settings.truncated_text.s_length) %></td>
+                </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>

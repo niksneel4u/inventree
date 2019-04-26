@@ -3,6 +3,7 @@ class CreateMarketplaces < ActiveRecord::Migration[6.0]
     create_table :marketplaces do |t|
       t.string :name
       t.string :website_url
+      t.string :image_xpath
 
       t.timestamps
     end

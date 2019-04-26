@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_093212) do
   create_table "marketplaces", force: :cascade do |t|
     t.string "name"
     t.string "website_url"
+    t.string "image_xpath"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["website_url"], name: "index_marketplaces_on_website_url", unique: true

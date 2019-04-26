@@ -17,8 +17,8 @@ en:
   amazon: www.amazon.in
   back: Back
   sign_out: "Sign out"
-  "yes": "yes"
-  "no": "no"
+  "yes": "Yes"
+  "no": "No"
   currency: 'Rs. '
   wrong: Oops! Something went wrong.
   are_you_sure: Are you sure?
@@ -41,6 +41,7 @@ en:
     add_url: Enter URL
     created: Marketplace Created.
     updated: Marketplace Updated.
+    image_path: Add Image Path from Marketplace(scraping)
     search_by:
       url: 'Search By Website URL'
   marketplace_mapping:

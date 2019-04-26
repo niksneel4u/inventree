@@ -2624,3 +2624,6 @@ input.toggle-switch:checked + .slider:before {
   font-weight: 600;
   font-size: 25px;
 }
+.marketplace-form{
+  width: 40%;
+}

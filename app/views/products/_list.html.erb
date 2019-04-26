@@ -15,6 +15,9 @@
                   </span>
                 </h4>
                 <p class="card-text">
+                  <%= product.marketplace.name.titleize%>
+                </p>
+                <p class="card-text">
                   <%= truncate(product.name, length: Settings.truncated_text.s_length)%>
                 </p>
                 <p>
