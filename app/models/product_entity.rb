@@ -17,4 +17,8 @@ class ProductEntity < ApplicationRecord
       product.update(updatable_hash)
     end
   end
+
+  def entity_name
+    entity.name
+  end
 end

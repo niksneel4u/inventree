@@ -43,46 +43,35 @@ class Scraping
   end
 
   def get_value_for_entity(marketplace_mapping, entity_block)
+    return block_present_or_not(entity_block) if marketplace_mapping.block_present
     if entity_block.present?
-      return find_image_path(entity_block) if marketplace_mapping.entity.name == I18n.t('image')
+      return image_path(entity_block) if marketplace_mapping.entity.name == I18n.t('image')
 
       find_entity_value(marketplace_mapping, entity_block)
     else
-      empty_nodes << marketplace_mapping.entity.name.titleize
+      unless marketplace_mapping.block_present
+        empty_nodes << marketplace_mapping.entity.name.titleize
+      end
       ''
     end
   end
 
+  def image_path(entity_block)
+    eval("entity_block.#{marketplace.image_xpath}")
+  rescue
+    ''
+  end
+
   def find_entity_value(marketplace_mapping, entity_block)
-    if marketplace_mapping.block_present
-      block_present_or_not(entity_block)
-    else
-      begin
-        entity_block.text.strip
-      rescue StandardError
-        ''
-      end
+    begin
+      entity_block.text.strip
+    rescue StandardError
+      ''
     end
   end
 
   def block_present_or_not(entity_block)
     entity_block.present? ? I18n.t('yes') : I18n.t('no')
-  end
-
-  def find_image_path(entity_block)
-    product_url.host == I18n.t('amazon') ? amazon_img_path(entity_block) : flipkart_img_path(entity_block)
-  end
-
-  def flipkart_img_path(entity_block)
-    entity_block.attr('style').value.split('(').last.split(')').first.gsub('128', '612')
-  rescue StandardError
-    ''
-  end
-
-  def amazon_img_path(entity_block)
-    entity_block.children[1].attr('src')
-  rescue StandardError
-    ''
   end
 
   def product_url
