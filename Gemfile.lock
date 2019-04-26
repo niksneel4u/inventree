@@ -303,6 +303,13 @@ GEM
     unf_ext (0.0.7.5)
     warden (1.2.8)
       rack (>= 2.0.6)
+    watir (6.16.5)
+      regexp_parser (~> 1.2)
+      selenium-webdriver (~> 3.6)
+    watir-rails (2.1.0)
+      rack
+      rails
+      watir (>= 6.0.0.beta4)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -355,6 +362,7 @@ DEPENDENCIES
   stroke-seven-rails
   turbolinks (~> 5)
   tzinfo-data
+  watir-rails
   web-console (>= 3.3.0)
   webpacker (>= 4.0.0.rc.3)
   whenever

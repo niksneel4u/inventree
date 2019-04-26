@@ -51,6 +51,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # gem 'rubocop-performance'
    gem 'awesome_print', require:'ap'
+   gem "watir-rails"
 end
 
 
