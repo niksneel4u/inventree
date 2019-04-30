@@ -8,7 +8,7 @@
             <%= form_with model: @resource, local: true, id: 'product' do |f| %>
               <div class="form-group">
                 <%= f.label :product_url %><br />
-                <%= f.text_field :product_url, class: 'form-control', placeholder: t('product.add_url') ,required: true%>
+                <%= f.text_field :product_url, value: params.dig(:product_url) || '', class: 'form-control', placeholder: t('product.add_url') ,required: true%>
               </div>
             <div class="actions">
               <%= f.submit class: 'btn btn-success btn-sm' %>
