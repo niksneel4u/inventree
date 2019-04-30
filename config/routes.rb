@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   patch 'marketplaces/:id/save_mappings', to: 'marketplaces#save_mappings', as: 'marketplace_save_mappings'
   get 'products/:id/fetch_latest_data', to: 'products#fetch_latest_data', as: 'marketplace_fetch_latest_data'  
   resources :entities, :marketplaces, :products, :receiver_emails
-
+  resources :requested_marketplaces, only: %i[index new create destroy]
+  
   root to: 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

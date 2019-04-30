@@ -96,6 +96,7 @@ class Scraping
 
   def page
     @page ||= agent.get(product.product_url)
+
   end
 
   def empty_nodes

@@ -21,6 +21,25 @@ export default class extends Controller {
       }
     };
     Inventree.form.validate_form(signInRules, errorMessages, '#product');
+
+    if ($('.tabPagonation').length > 0){
+      var one_time_call = 0;
+      var more_posts_url = $('.tabPagonation a').attr('href');
+      $(window).scroll(function(){
+        if (one_time_call == 0 && more_posts_url && ($(window).scrollTop() > $(document).height() - $(window).height() - 60)){
+          if ($('#page').length > 0){
+            $('#loader').removeClass('hidden');
+            setTimeout(
+              function()
+              {
+                $('#page')[0].click();
+              }, 1000
+            );
+          }
+          one_time_call = 1;
+        }
+      });
+    }
   }
 
   changeStatus(){
@@ -29,6 +48,5 @@ export default class extends Controller {
       url: '/products/' + $(event.target).val() + '/change_status',
       dataType: 'script'
     });
-
   }
 }

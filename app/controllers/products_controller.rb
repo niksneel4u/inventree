@@ -57,4 +57,8 @@ class ProductsController < InheritedResource
   def per_page_resources
     Settings.pagination.products.per_page
   end
+
+  def js_index_page
+    'index'
+  end
 end

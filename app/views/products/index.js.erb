@@ -1,0 +1,5 @@
+$('.collectionList').append("<%= j render 'list' %>");
+$('.tabPagonation').html("<%= j render 'pagination' %>");
+if (!$('#loader').hasClass('hidden')){
+  $('#loader').addClass('hidden');
+}

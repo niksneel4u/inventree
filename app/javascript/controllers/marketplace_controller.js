@@ -6,7 +6,7 @@ export default class extends Controller {
       required: true
     };
 
-    var signUpRules = {
+    var marketplaceRules = {
       'marketplace[name]': requiredRule,
       'marketplace[website_url]': {
         required: true,
@@ -22,6 +22,6 @@ export default class extends Controller {
       },
       'marketplace[image_xpath]': 'Place Enter Image path for Marketplace'
     };
-    Inventree.form.validate_form(signUpRules, errorMessages, '#marketplace');
+    Inventree.form.validate_form(marketplaceRules, errorMessages, '#marketplace');
   }
 }

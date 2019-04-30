@@ -23,6 +23,7 @@ en:
   wrong: Oops! Something went wrong.
   are_you_sure: Are you sure?
   image: image
+  add_marketplace: Add marketplace
   entity:
     title: Entity
     add_entity: Add New Entity
@@ -83,3 +84,8 @@ en:
     record_created: 'Created %{model}.'
     record_destroyed: 'Deleted %{model}.'
     default_update: "changed %{field} from '%{old_value}' to '%{new_value}'."
+  requested_marketplace:
+    add: 'Request New Marketplace'
+    created: We have initiated your request for new marketplace
+    title: Requested Marketplaces
+    duplicate: Marketplace is already available.
