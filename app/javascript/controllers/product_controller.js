@@ -40,10 +40,6 @@ export default class extends Controller {
         }
       });
     }
-
-    $('#page').on('click', function(){
-      $('')
-    });
   }
 
   changeStatus(){

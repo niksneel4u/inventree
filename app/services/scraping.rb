@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 require 'mechanize'
-require 'capybara'
-require 'capybara/dsl'
-require 'capybara/poltergeist'
-
 
 class Scraping
   attr_reader :id
