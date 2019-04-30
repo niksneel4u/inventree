@@ -53,6 +53,9 @@ export default class extends Controller {
         required: "Password required",
         minlength: "Enter minimum 6 characters",
         maxlength: "Password should not grater than 15 characters"
+      },
+      'user[password_confirmation]': {
+        equalTo: "Password and Confirm Password do not match"
       }
     };
     Inventree.form.validate_form(signUpRules, errorMessages, '#signUp');

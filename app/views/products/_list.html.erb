@@ -17,8 +17,9 @@
                 <p class="card-text">
                   <%= product.marketplace.name.titleize%>
                 </p>
-                <p class="card-text">
-                  <%= truncate(product.name, length: Settings.truncated_text.s_length)%>
+                <% product_name = product.name %>
+                <p class="card-text" title='<%= product_name %>'>
+                  <%= truncate(product_name, length: Settings.truncated_text.s_length)%>
                 </p>
                 <p>
                   <%= t('status') %>:
