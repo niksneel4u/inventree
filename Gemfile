@@ -34,7 +34,7 @@ gem 'active_link_to'
 # for authorization
 gem 'pundit'
 # audit log for product entities
-gem 'audited', git: 'git@github.com:NeelTandel-BTC/audited.git'
+gem 'audited', github: 'NeelTandel-BTC/audited'
 # Cron Jobs
 gem 'whenever'
 # settings for development and production

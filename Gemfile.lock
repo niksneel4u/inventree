@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:NeelTandel-BTC/audited.git
+  remote: https://github.com/NeelTandel-BTC/audited.git
   revision: fd93e1199dc2d3610576ebe96ba3f71403b05a24
   specs:
     audited (4.7.0)
