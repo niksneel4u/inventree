@@ -7,7 +7,7 @@ class InheritedResource < ApplicationController
     @collection = @q.result.page(params[:page]).per(per_page_resources)
     respond_to do |format|
       format.html
-      format.js { render 'shared/index' }
+      format.js { render js_index_page }
     end
   end
 
@@ -120,5 +120,9 @@ class InheritedResource < ApplicationController
 
   def per_page_resources
     Settings.pagination.per_page
+  end
+
+  def js_index_page
+    'shared/index'
   end
 end

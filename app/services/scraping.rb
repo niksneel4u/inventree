@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require 'mechanize'
+require 'capybara'
+require 'capybara/dsl'
+require 'capybara/poltergeist'
+
 
 class Scraping
   attr_reader :id
@@ -30,9 +34,6 @@ class Scraping
   end
 
   def values_from_scraping(mpm)
-    
-    binding.pry
-    
     @entity_block = page.search("[#{mpm.entity_identifier}='#{mpm.entity_identifier_value}']")
     @value = get_value_for_entity(mpm, @entity_block)
   end
@@ -98,8 +99,8 @@ class Scraping
   end
 
   def page
-    binding.pry
     @page ||= agent.get(product.product_url)
+
   end
 
   def empty_nodes

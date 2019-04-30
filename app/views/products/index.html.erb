@@ -14,6 +14,19 @@
         </div>
       </div>
     </div>
-    <%= render 'shared/list' %>
+    <%= render 'search_form' %>
+    
+    <div class="col-sm-12 collectionList">
+      <% if @collection.present? %>
+        <%= render 'list' %>
+      <% else %>
+        <%= render 'shared/no_records'%>
+      <% end %>
+    </div>
+    <div class="m-t-20">
+      <div class="tabPagonation text-center">
+        <%= render 'pagination' %>
+      </div>
+    </div>
   </div>
 </div>
