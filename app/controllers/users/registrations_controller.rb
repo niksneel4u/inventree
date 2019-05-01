@@ -20,7 +20,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to root_path
     end
   rescue ActiveRecord::RecordInvalid
-    flash[:error] = @company.errors.full_messages.join(' ,')
     build_resource(user_params)
     render 'new'
   end
