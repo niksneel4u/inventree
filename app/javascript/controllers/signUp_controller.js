@@ -31,8 +31,8 @@ export default class extends Controller {
         minlength: 6,
         maxlength: 15,
         equalTo: "#user_password"
-      }
-      // 'company[terms_and_conditions]' : requiredRule
+      },
+      'company[terms_and_conditions]' : requiredRule
     };
 
     var errorMessages = {
@@ -57,8 +57,8 @@ export default class extends Controller {
       },
       'user[password_confirmation]': {
         equalTo: "Password and Confirm Password do not match"
-      }
-      // 'company[terms_and_conditions]' : "Please accept terms and condition"
+      },
+      'company[terms_and_conditions]' : "Please accept terms and condition"
     };
     Inventree.form.validate_form(signUpRules, errorMessages, '#signUp');
   }
