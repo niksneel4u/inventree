@@ -23,8 +23,8 @@ export default class extends Controller {
 
     var errorMessages = {
       'user[phone_number]': {
-        minlength: 'Place enter valid number',
-        maxlength: 'Place enter valid number'
+        minlength: 'Please enter valid number',
+        maxlength: 'Please enter valid number'
       },
       'user[password]': {
         required: "Password required",

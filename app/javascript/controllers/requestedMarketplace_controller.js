@@ -15,7 +15,7 @@ export default class extends Controller {
 
     var errorMessages = {
       'requested_marketplace[name]':{
-        required: 'place enter URL'
+        required: 'Please enter URL'
       }
     };
     Inventree.form.validate_form(requestedMarketplaceRules, errorMessages, '#requested_marketplace');

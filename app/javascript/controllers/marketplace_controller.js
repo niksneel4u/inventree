@@ -16,11 +16,11 @@ export default class extends Controller {
     };
 
     var errorMessages = {
-      'marketplace[name]': 'Place Enter Marketplace Name',
+      'marketplace[name]': 'Please Enter Marketplace Name',
       'marketplace[website_url]':{
-        required: 'place enter URL'
+        required: 'Please enter URL'
       },
-      'marketplace[image_xpath]': 'Place Enter Image path for Marketplace'
+      'marketplace[image_xpath]': 'Please Enter Image path for Marketplace'
     };
     Inventree.form.validate_form(marketplaceRules, errorMessages, '#marketplace');
   }

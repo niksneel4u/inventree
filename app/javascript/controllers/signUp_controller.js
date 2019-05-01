@@ -31,23 +31,24 @@ export default class extends Controller {
         minlength: 6,
         maxlength: 15,
         equalTo: "#user_password"
-      }
+      },
+      'company[terms_and_conditions]' : requiredRule
     };
 
     var errorMessages = {
-      'company[name]': 'Place Enter Company Name',
-      'company[contact_person_name]': 'Place Enter Contact Person Name',
+      'company[name]': 'Please Enter Company Name',
+      'company[contact_person_name]': 'Please Enter Contact Person Name',
       'company[email]': {
-        required: 'Place Enter E-Mail',
+        required: 'Please Enter E-Mail',
         email: 'Enter Valid E-Mail Address'
       },
-      'user[first_name]': 'Place Enter First Name',
-      'user[last_name]': 'Place Enter First Name',
+      'user[first_name]': 'Please Enter First Name',
+      'user[last_name]': 'Please Enter First Name',
       'company[contact_person_number]': {
-        required: 'Place Enter Phone Numbe',
+        required: 'Please Enter Phone Numbe',
         digits: 'Please enter only digits.',
-        minlength: 'Place Enter valid number',
-        maxlength: 'Place Enter valid number'
+        minlength: 'Please Enter valid number',
+        maxlength: 'Please Enter valid number'
       },
       'user[password]': {
         required: "Password required",
@@ -56,7 +57,8 @@ export default class extends Controller {
       },
       'user[password_confirmation]': {
         equalTo: "Password and Confirm Password do not match"
-      }
+      },
+      'company[terms_and_conditions]' : "Terms must be accepted"
     };
     Inventree.form.validate_form(signUpRules, errorMessages, '#signUp');
   }

@@ -69,9 +69,9 @@ en:
   pundit:
     unauthorized: You are not authorized to perform this action.
   user:
-    mobile_no_validation: Place enter valid Mobile Number
+    mobile_no_validation: Please enter valid Mobile Number
   receiver_email:
-    title : E-Mail Settings
+    title : Notification Settings
     add: Add new Email
     add_email: Enter E-Mail Address
     add_person_name: Enter Person Name

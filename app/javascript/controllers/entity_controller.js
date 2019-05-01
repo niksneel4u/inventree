@@ -11,7 +11,7 @@ export default class extends Controller {
     };
 
     var errorMessages = {
-      'entity[name]': 'Place Enter Entity Name'
+      'entity[name]': 'Please Enter Entity Name'
     };
     Inventree.form.validate_form(signUpRules, errorMessages, '#entity');
   }
