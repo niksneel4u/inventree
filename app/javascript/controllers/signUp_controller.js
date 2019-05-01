@@ -58,7 +58,7 @@ export default class extends Controller {
       'user[password_confirmation]': {
         equalTo: "Password and Confirm Password do not match"
       },
-      'company[terms_and_conditions]' : "Please accept terms and condition"
+      'company[terms_and_conditions]' : "Terms must be accepted"
     };
     Inventree.form.validate_form(signUpRules, errorMessages, '#signUp');
   }
