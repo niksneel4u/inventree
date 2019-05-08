@@ -15,6 +15,10 @@ class User < ApplicationRecord
             numericality: true,
             length: { minimum: 10, maximum: 15 }, uniqueness: true
 
+  def fullname
+    (last_name + ' ' + first_name).titleize
+  end
+
   private
 
   def email_required?
