@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, Pundit::NotDefinedError, with: :unauthorized_user
   protect_from_forgery
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_raven_context
 
   def after_sign_in_path_for(resource)
     if resource.has_role?('admin')
@@ -13,6 +14,11 @@ class ApplicationController < ActionController::Base
     else
       products_path
     end
+  end
+
+  def set_raven_context
+    Raven.user_context(id: session[:current_user_id]) # or anything else in session
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 
   def configure_permitted_parameters

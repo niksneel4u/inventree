@@ -58,6 +58,7 @@ class Scraping
   end
 
   def image_path(entity_block)
+    as
     eval("entity_block.#{marketplace.image_xpath}")
   rescue
     ''

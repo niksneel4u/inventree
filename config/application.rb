@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -10,6 +12,18 @@ module Inventree
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+
+    Raven.configure do |config|
+      config.dsn = Rails.application.credentials.dig(:sentry, :dsn)
+    end
+
+    # in your application.rb:
+    config.filter_parameters << :password
+
+    # in an initializer, like sentry.rb
+    Raven.configure do |config|
+      config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
+    end
 
     config.active_job.queue_adapter = :sidekiq
     # Settings in config/environments/* take precedence over those specified here.
