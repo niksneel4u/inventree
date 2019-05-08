@@ -4,7 +4,7 @@ class ProductEntity < ApplicationRecord
   belongs_to :product
   belongs_to :entity
 
-  audited associated_with: :product
+  audited associated_with: :product, unless: Proc.new { |p| p.entity_name == 'image'  }
 
   after_commit :add_entity_to_product, on: %i[create update]
 

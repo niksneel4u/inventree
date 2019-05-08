@@ -22,7 +22,7 @@ class InheritedResource < ApplicationController
     authorize @resource
     @resource.save!
     respond_with_flash
-  rescue StandardError
+  rescue => e
     flash_for_error
     render 'new'
   end
@@ -35,7 +35,7 @@ class InheritedResource < ApplicationController
     resource.update!(resource_params)
     flash[:notice] = t("#{downcase_class}.updated")
     redirect_to resource_index_path
-  rescue StandardError
+  rescue => e
     flash_for_error
     render 'edit'
   end

@@ -9,7 +9,8 @@ class Product < ApplicationRecord
   has_many :product_entities, dependent: :destroy
   after_commit :call_scraping_job, on: :create
 
-  audited
+  audited only: :status
+
   has_associated_audits
 
   def call_scraping_job

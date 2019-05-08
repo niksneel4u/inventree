@@ -4,7 +4,7 @@ module AuditLogDataHelper
   module_function
 
   def audit_user_name(audit)
-    audit.user.try(:name) || I18n.t('system_auditer')
+    audit.user.try(:fullname) || I18n.t('system_auditer')
   end
 
   def audit_message(audit)
