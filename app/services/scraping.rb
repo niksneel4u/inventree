@@ -44,6 +44,7 @@ class Scraping
 
   def get_value_for_entity(marketplace_mapping, entity_block)
     return block_present_or_not(entity_block) if marketplace_mapping.block_present
+
     if entity_block.present?
       return image_path(entity_block) if marketplace_mapping.entity.name == I18n.t('image')
 
@@ -62,7 +63,7 @@ class Scraping
     ''
   end
 
-  def find_entity_value(marketplace_mapping, entity_block)
+  def find_entity_value(entity_block)
     begin
       entity_block.text.strip
     rescue StandardError
@@ -96,7 +97,17 @@ class Scraping
 
   def page
     @page ||= agent.get(product.product_url)
+  rescue Mechanize::ResponseCodeError => e
+    if all_response_code.include? e.response_code
+      e.skip
+      sleep 5
+    else
+      retry
+    end
+  end
 
+  def all_response_code
+    %w[403 404 502]
   end
 
   def empty_nodes
