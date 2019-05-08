@@ -48,7 +48,7 @@ class Scraping
     if entity_block.present?
       return image_path(entity_block) if marketplace_mapping.entity.name == I18n.t('image')
 
-      find_entity_value(marketplace_mapping, entity_block)
+      find_entity_value(entity_block)
     else
       unless marketplace_mapping.block_present
         empty_nodes << marketplace_mapping.entity.name.titleize
