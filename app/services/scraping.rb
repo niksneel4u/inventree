@@ -19,7 +19,7 @@ class Scraping
         changes_in_entity(product_entity, data_changes)
       end
     end
-    EntityChangeMailer.inform_update(product_id: product.id, changes: data_changes).deliver_now
+    EntityChangeMailer.inform_update(product_id: product.id, changes: data_changes).deliver_now if data_changes.present?
     send_empty_node if empty_nodes.present?
   end
 
